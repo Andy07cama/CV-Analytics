@@ -4,6 +4,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Textos
 cv = "Soy estudiante de programación con experiencia en HTML, CSS y trabajo en equipo."
 requisitos = "Buscamos desarrollador web con experiencia en HTML, CSS y trabajo en equipo."
+import LectorDeTextos #probar si esta conectado
+print("Edad", LectorDeTextos)
 
 # TF-IDF vectorización
 vectorizer = TfidfVectorizer()
