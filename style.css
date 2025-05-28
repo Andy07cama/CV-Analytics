@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+background-color: lightgray;
+display: grid;
+place-content: center;
+
+}
+
+Input {
+    Display: none;
+}
+Label {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    Height:  100px;
+    Width: 150px;
+    Border-radius: 100px;
+    Border: 2px dashed #999;
+
+}
+Label:hover {
+    Color: #de0611;
+    Border: 2px dashed #de0611;
+}
