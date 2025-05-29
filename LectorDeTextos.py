@@ -38,7 +38,3 @@ texto = extraer_texto_pdf("cv_ejemplo.pdf")
 edad = extraer_edad(texto)
 estudios = extraer_estudios(texto)
 experiencia = extraer_experiencia_laboral(texto)
-
-print("Edad:", edad)
-print("Estudios:", estudios)
-print("Experiencia:", experiencia)
