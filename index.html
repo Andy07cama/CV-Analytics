@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-
-
-
+    <title>Comparador de CV</title>
 </head>
 <body>
-    <input type="file" id="file" accept="application/pdf"/>
-    <label for="file">Upload File</label>
+    <h1>Comparador de CV y Requisitos</h1>
+    <form action="http://localhost:5000/comparar" method="post" enctype="multipart/form-data">
+        <label for="cv">Subí tu CV (PDF):</label><br>
+        <input type="file" id="cv" name="cv" accept="application/pdf" required><br><br>
+
+
+        <label for="requisitos">Subí los Requisitos del Trabajo (PDF):</label><br>
+        <input type="file" id="requisitos" name="requisitos" accept="application/pdf" required><br><br>
+
+
+        <input type="submit" value="Comparar">
+    </form>
 </body>
 </html>
