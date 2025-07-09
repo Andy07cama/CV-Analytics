@@ -1,10 +1,11 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f9f8;
+    font-family: Arial, sans-serif;
+    background-color: #f7fafa;
+    color: #2c3e50;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
-
 
 .header {
     display: flex;
@@ -13,102 +14,82 @@ body {
     padding: 20px;
 }
 
-
 .logo {
-    height: 60px;
+    height: 50px;
 }
-
 
 .home-button img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+    height: 40px;
 }
-
 
 .formulario {
-    text-align: center;
-    padding: 40px 20px;
+    padding: 40px;
 }
-
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 40px;
-    color: #2e3c4f;
-}
-
-
-.formulario-contenedor {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
 
 .upload-boxes {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 40px;
 }
-
 
 .upload-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
 }
-
 
 .upload-label {
     margin-bottom: 10px;
     font-weight: bold;
-    color: #2e3c4f;
 }
-
 
 .drop-area {
-    width: 100%;
+    position: relative;
+    width: 300px;
     height: 200px;
-    background-color: #cbd5e1;
-    border: 3px dashed #475569;
-    border-radius: 15px;
+    border: 2px dashed #2c3e50;
+    border-radius: 10px;
+    background-color: #dbe3f1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
+    justify-content: center;
+    overflow: hidden;
+    flex-direction: column;
+    text-align: center;
 }
-
 
 .drop-area input[type="file"] {
     opacity: 0;
     width: 100%;
     height: 100%;
+    position: absolute;
     cursor: pointer;
 }
 
+.file-name {
+    z-index: 1;
+    pointer-events: none;
+    font-weight: bold;
+    color: #2c3e50;
+    padding: 10px;
+}
 
 .boton-contenedor {
     text-align: center;
 }
 
-
 .boton-comparar {
-    background-color: #0f485f;
+    padding: 12px 30px;
+    background-color: #0c4058;
     color: white;
-    font-weight: bold;
-    font-size: 16px;
     border: none;
-    padding: 14px 30px;
     border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-
 .boton-comparar:hover {
-    background-color: #083646;
+    background-color: #0a3345;
 }
