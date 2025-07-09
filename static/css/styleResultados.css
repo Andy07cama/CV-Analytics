@@ -1,56 +1,54 @@
-/* Estilo general */
 body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9faf7;
     margin: 0;
     padding: 0;
-    background-color: #f8f9f6;
-    font-family: 'Segoe UI', sans-serif;
-    color: #24303e;
+    color: #1d2c3b;
 }
 
-/* Encabezado con logo y botón de volver */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 40px;
+    padding: 20px 40px;
 }
 
 .logo {
-    height: 60px;
+    height: 48px;
 }
 
-.volver-btn {
-    font-size: 40px;
-    text-decoration: none;
-    color: #24303e;
+.volver-btn img {
+    height: 28px;
     transition: transform 0.2s ease;
 }
 
-.volver-btn:hover {
+.volver-btn img:hover {
     transform: scale(1.1);
 }
 
-/* Título principal */
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
     text-align: center;
-    padding-top: 40px;
 }
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 60px;
+    font-size: 1.6em;
+    margin-bottom: 30px;
 }
 
-/* Sección de resultados */
 .resultado {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
     text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 20px;
-    line-height: 1.6;
 }
 
-.resultado p strong {
-    display: inline-block;
-    width: 110px;
+.resultado p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
 }
