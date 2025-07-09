@@ -1,0 +1,56 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9f6;
+    font-family: 'Segoe UI', sans-serif;
+    color: #24303e;
+}
+
+/* Encabezado con logo y botón de volver */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+}
+
+.logo {
+    height: 60px;
+}
+
+.volver-btn {
+    font-size: 40px;
+    text-decoration: none;
+    color: #24303e;
+    transition: transform 0.2s ease;
+}
+
+.volver-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Título principal */
+main {
+    text-align: center;
+    padding-top: 40px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 60px;
+}
+
+/* Sección de resultados */
+.resultado {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.resultado p strong {
+    display: inline-block;
+    width: 110px;
+}

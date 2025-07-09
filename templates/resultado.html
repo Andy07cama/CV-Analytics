@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,5 +12,31 @@
     <p><strong>Feedback:</strong> {{ feedback }}</p>
 
     <a href="index.html">Volver</a>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de la Comparación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleResultados.css') }}">
+</head>
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
+        <a href="{{ url_for('home') }}" class="volver-btn">⤴</a>
+    </header>
+
+    <main>
+        <h1>Resultados de la comparación</h1>
+
+        <section class="resultado">
+            <p><strong>Similitud:</strong> {{ similitud }}</p>
+            <p><strong>Feedback:</strong> {{ feedback }}</p>
+        </section>
+    </main>
+
 </body>
 </html>
