@@ -1,13 +1,11 @@
-# ComparadorDeTexto.py
 from sentence_transformers import SentenceTransformer, util
 import re
 import nltk
 from nltk.corpus import stopwords
-
 nltk.download('stopwords')
 stop_words = set(stopwords.words('spanish'))
+nltk.data.path.append("nltk_data")
 
-# Modelo semántico multilingüe
 model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 def limpiar_texto(texto):
@@ -26,7 +24,7 @@ def detectar_rango_edad(texto_requisitos, edad_cv):
             return min_edad <= edad_cv <= max_edad
     except:
         pass
-    return True  # Si no se encuentra un rango claro o edad inválida, se permite
+    return True  
 
 def comparar_textos(texto_cv, texto_req):
     from LectorDeTextos import extraer_edad

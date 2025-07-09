@@ -1,7 +1,6 @@
 import pdfplumber
 import re
 
-
 def extraer_texto_pdf(ruta_pdf):
     texto = ""
     with pdfplumber.open(ruta_pdf) as pdf:

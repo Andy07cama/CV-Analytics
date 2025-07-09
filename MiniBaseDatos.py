@@ -1,4 +1,3 @@
-# MiniBaseDatos.py
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 import os
@@ -43,7 +42,6 @@ def comparar():
     except Exception as e:
         return jsonify({'error': f'No se pudieron guardar los archivos: {str(e)}'}), 500
 
-    # Extraer texto de ambos archivos
     texto_cv = LectorDeTextos.extraer_texto_pdf(cv_path)
     texto_req = LectorDeTextos.extraer_texto_pdf(req_path)
     
