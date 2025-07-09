@@ -1,4 +1,6 @@
 <!-- templates/index.html -->
+
+<!--
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,5 +19,52 @@
 
         <input type="submit" value="Comparar">
     </form>
+</body>
+</html>
+-->
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{ url_for('static', filename='Adobe Express - file.png') }}" alt="CV Analytics Logo" class="logo">
+        <a href="/" class="home-button">
+            <img src="{{ url_for('static', filename='Home_Btn.png') }}" alt="Home">
+        </a>
+    </header>
+
+
+    <main class="formulario">
+        <h1>Comparador de CV y Requisitos</h1>
+
+        <form action="{{ url_for('comparar') }}" method="post" enctype="multipart/form-data" class="formulario-contenedor">
+            <div class="upload-boxes">
+                <div class="upload-section">
+                    <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
+                    <div class="drop-area">
+                        <input type="file" id="requisitos" name="requisitos" accept="application/pdf" required>
+                    </div>
+                </div>
+
+
+                <div class="upload-section">
+                    <label for="cv" class="upload-label">Sube tu CV :</label>
+                    <div class="drop-area">
+                        <input type="file" id="cv" name="cv" accept="application/pdf" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="boton-contenedor">
+                <input type="submit" value="COMPARAR" class="boton-comparar">
+            </div>
+        </form>
+    </main>
 </body>
 </html>
