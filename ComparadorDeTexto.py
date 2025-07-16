@@ -1,4 +1,4 @@
-#from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer, util
 import re
 import nltk
 import string
@@ -8,7 +8,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('spanish'))
 nltk.data.path.append("nltk_data")
 
-#model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
+model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 def limpiar_texto(texto):
     texto = texto.translate(str.maketrans("", "", string.punctuation))
@@ -30,7 +30,7 @@ def detectar_rango_edad(texto_requisitos, edad_cv):
         pass
     return True
 
-#def comparar_textos(texto_cv, texto_req):
+def comparar_textos(texto_cv, texto_req):
     from LectorDeTextos import extraer_edad, extraer_estudios, extraer_experiencia_laboral
 
     texto_cv_limpio = limpiar_texto(texto_cv)

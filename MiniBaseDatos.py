@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 import os
-#from ComparadorDeTexto import comparar_textos
+from ComparadorDeTexto import comparar_textos
 import LectorDeTextos
 
 app = Flask(__name__)

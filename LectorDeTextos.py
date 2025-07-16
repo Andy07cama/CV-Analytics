@@ -18,12 +18,12 @@ def extraer_edad(texto):
 #import unicodedata
 #from datetime import datetime
 
-#def extraer_texto_pdf(ruta_pdf):
-#    texto = ""
- #   with pdfplumber.open(ruta_pdf) as pdf:
-  #      for pagina in pdf.pages:
-   #         texto += pagina.extract_text() + "\n"
-    #return texto
+def extraer_texto_pdf(ruta_pdf):
+    texto = ""
+    with pdfplumber.open(ruta_pdf) as pdf:
+        for pagina in pdf.pages:
+            texto += pagina.extract_text() + "\n"
+    return texto
 
 #def normalizar_texto(texto):
  #   texto = texto.lower()
