@@ -13,7 +13,11 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/")
-def home():
+def index():
+    return render_template("pantalla_principal.html")
+
+@app.route("/subir")
+def subir():
     return render_template("index.html")
 
 @app.route('/comparar', methods=['POST'])

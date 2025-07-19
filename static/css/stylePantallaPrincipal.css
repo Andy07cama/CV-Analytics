@@ -1,0 +1,101 @@
+/* Scroll personalizado */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #0c4058;
+    border-radius: 6px;
+}
+
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fdfdfc;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    height: 40px;
+}
+
+.nav a, .modo-oscuro-btn {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Presentación */
+.presentacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.presentacion .texto {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.insertar-cv-btn {
+    background-color: #0c4058;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.imagen-presentacion {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+/* Misión */
+.mision {
+    background-color: #cfd8e8;
+    border-radius: 25px;
+    margin: 40px 20px;
+    padding: 25px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Footer */
+.footer {
+    background-color: #0c4058;
+    color: #ffffff;
+    text-align: right;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+}
+
+.footer span {
+    font-weight: bold;
+}

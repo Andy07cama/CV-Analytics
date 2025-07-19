@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Analytics - Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylePantallaPrincipal.css') }}">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics Logo" class="logo">
+        <nav class="nav">
+            <a href="#">Filtrado de CV</a>
+            <a href="#">Nuestra misión</a>
+            <a href="#">Ayuda</a>
+            <button class="modo-oscuro-btn">🌓</button>
+        </nav>
+    </header>
+
+    <!-- Sección principal -->
+    <section class="presentacion">
+        <div class="texto">
+            <h2>¿Necesitás ayuda para mejorar tu currículum?</h2>
+            <p>La página web número #1 para asistencia y mejora de CVs.</p>
+            <a href="{{ url_for('subir') }}" class="insertar-cv-btn">Insertar CV</a>
+        </div>
+        <img src="{{ url_for('static', filename='img/Foto_Pantalla_Principal.png') }}" alt="Manos estrechándose" class="presentacion-img">
+    </section>
+
+    <!-- Nuestra misión -->
+    <section class="mision">
+        <h3>¿Cuál es nuestra misión?</h3>
+        <p>
+            Miles de personas a diario aplican a un trabajo, con la incertidumbre de qué tan preparados están para el puesto,
+            y qué efecto tendrá su currículum en el empleador.
+        </p>
+        <p>
+            Lo que buscamos con CV Analytics es ayudar a facilitar, agilizar y mejorar el proceso de búsqueda de trabajo,
+            mejorando la preparación del currículum del empleador adecuándolo al puesto de trabajo al que se aplica.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Redes sociales: <span>@cvanalytics</span></p>
+    </footer>
+</body>
+</html>
