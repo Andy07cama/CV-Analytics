@@ -12,7 +12,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 try:
     
-    API_KEY = "AIzaSyDda1OWyAddH2h5p3Aolgxek7ISQtpXeIw" 
+    API_KEY = "" 
     
     if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
         print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
