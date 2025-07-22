@@ -3,3 +3,4 @@ nltk
 sentence-transformers
 pdfplumber
 scikit-learn
+google.generativeai

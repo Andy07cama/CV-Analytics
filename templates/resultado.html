@@ -1,20 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado de la Comparación</title>
-</head>
-<body>
-    <h1>Resultado de la Comparación</h1>
-
-    <p><strong>Similitud:</strong> {{ similitud }}</p>
-    <p><strong>Feedback:</strong> {{ feedback }}</p>
-
-    <a href="index.html">Volver</a>
-</body>
-</html>
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,6 +20,10 @@
         <section class="resultado">
             <p><strong>Similitud:</strong> {{ similitud }}</p>
             <p><strong>Feedback:</strong> {{ feedback }}</p>
+            <p><strong>Sugerencias:</strong></p>
+            <div class="sugerencias-box">
+                {{ sugerencias | safe }}
+            </div>
         </section>
     </main>
 

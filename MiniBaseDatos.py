@@ -1,16 +1,70 @@
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 import os
-from ComparadorDeTexto import comparar_textos
 import LectorDeTextos
+from ComparadorDeTexto import comparar_textos
+import google.generativeai as genai
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'pdf'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
+try:
+    
+    API_KEY = "AIzaSyDda1OWyAddH2h5p3Aolgxek7ISQtpXeIw" 
+    
+    if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
+        print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
+        API_KEY = None
+    else:
+        genai.configure(api_key=API_KEY)
+except Exception as e:
+    print(f"Error fatal al configurar la API de Gemini: {e}")
+    API_KEY = None
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def generar_sugerencias_con_gemini(texto_cv, texto_req):
+    """
+    Usa la API de Gemini para generar sugerencias de mejora para el CV con un prompt detallado.
+    """
+    if not API_KEY:
+        return "Error de Configuración\nNo se pueden generar sugerencias porque la clave de API de Gemini no ha sido configurada correctamente en el archivo `MiniBaseDatos.py`."
+
+    prompt = f"""
+    Rol: Eres un asistente experto en Recursos Humanos y un coach de carrera profesional.
+
+    Tarea: Analiza el siguiente currículum (CV) en el contexto de los requisitos para un puesto de trabajo. Tu objetivo es proporcionar consejos constructivos y accionables para que el candidato pueda mejorar su CV y aumentar sus posibilidades de ser seleccionado.
+
+    Contexto:
+    ---
+    CV DEL CANDIDATO:
+    {texto_cv}
+    ---
+    REQUISITOS DEL PUESTO:
+    {texto_req}
+    ---
+
+    Instrucciones para la respuesta:
+    1.  No inventes información: Basa tus sugerencias únicamente en la información proporcionada.
+    2.  Sé constructivo: Enfócate en cómo mejorar y adaptar lo que ya existe, en lugar de solo señalar las carencias.
+    3.  Formato de Salida: Genera la respuesta en formato Markdown. Usa un encabezado principal y una lista de viñetas para las sugerencias. Cada sugerencia debe ser clara y explicar el "porqué" del cambio.
+
+    Ahora, genera las sugerencias para el CV y los requisitos proporcionados.
+    """
+
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        print(f"[❗] Error al generar sugerencias con Gemini: {e}")
+        error_message = f"⚠️ Error al contactar la API de Gemini\nNo se pudieron generar las sugerencias.\n\n**Detalle del error:** {str(e)}"
+        return error_message
+
+# --- RUTAS DE LA APLICACIÓN ---
 
 @app.route("/")
 def index():
@@ -53,11 +107,21 @@ def comparar():
         return render_template("resultado.html", similitud="0%", feedback="❗ No se pudo leer el contenido de uno o ambos archivos PDF. Verificá que no estén vacíos y que tengan texto real.")
 
     resultado = comparar_textos(texto_cv, texto_req)
-
     similitud = f"{resultado[0]:.2f}%"
     feedback = resultado[1]
-    return render_template("resultado.html", similitud=similitud, feedback=feedback)
 
+    sugerencias = ""
+    # Se generan sugerencias si la compatibilidad no es casi perfecta
+    if resultado[0] < 95: 
+        sugerencias = generar_sugerencias_con_gemini(texto_cv, texto_req)
+
+    try:
+        os.remove(cv_path)
+        os.remove(req_path)
+    except OSError as e:
+        print(f"Error al eliminar archivos: {e}")
+
+    return render_template("resultado.html", similitud=similitud, feedback=feedback, sugerencias=sugerencias)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
