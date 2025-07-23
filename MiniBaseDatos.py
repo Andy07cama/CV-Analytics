@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import LectorDeTextos
 from ComparadorDeTexto import comparar_textos
-import google.generativeai as genai
+#import google.generativeai as genai
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')

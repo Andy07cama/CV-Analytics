@@ -1,95 +1,136 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7fafa;
-    color: #2c3e50;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+font-family: Arial, sans-serif;
+background-color: #f7fafa;
+color: #2c3e50;
+margin: 0;
+padding: 0;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 60px;
+}
+
+@media (max-width: 768px) {
+.header {
+    padding: 20px 20px;
+}
 }
 
 .logo {
-    height: 50px;
+height: 50px;
 }
 
 .home-button img {
-    height: 40px;
+height: 40px;
 }
 
 .formulario {
-    padding: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px 20px;
+}
+
+.formulario-contenedor {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+max-width: 800px;
 }
 
 .upload-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+display: flex;
+justify-content: center;
+gap: 40px;
+margin-bottom: 30px;
+flex-wrap: wrap;
+width: 100%;
+}
+
+@media (max-width: 768px) {
+.upload-boxes {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 }
 
 .upload-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 300px;
 }
 
 .upload-label {
-    margin-bottom: 10px;
-    font-weight: bold;
+margin-bottom: 10px;
+font-weight: bold;
+text-align: center;
 }
 
 .drop-area {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    border: 2px dashed #2c3e50;
-    border-radius: 10px;
-    background-color: #dbe3f1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    flex-direction: column;
-    text-align: center;
+position: relative;
+width: 100%;
+height: 200px;
+border: 2px dashed #2c3e50;
+border-radius: 10px;
+background-color: #dbe3f1;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+flex-direction: column;
+text-align: center;
 }
 
 .drop-area input[type="file"] {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    cursor: pointer;
+opacity: 0;
+width: 100%;
+height: 100%;
+position: absolute;
+cursor: pointer;
 }
 
 .file-name {
-    z-index: 1;
-    pointer-events: none;
-    font-weight: bold;
-    color: #2c3e50;
-    padding: 10px;
+z-index: 1;
+pointer-events: none;
+font-weight: bold;
+color: #2c3e50;
+padding: 10px;
+}
+
+.contador {
+font-size: 18px;
+margin-bottom: 20px;
+color: #555;
+text-align: center;
 }
 
 .boton-contenedor {
-    text-align: center;
+text-align: center;
+width: 100%;
 }
 
 .boton-comparar {
-    padding: 12px 30px;
-    background-color: #0c4058;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+padding: 12px 30px;
+background-color: #0c4058;
+color: white;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s;
 }
 
 .boton-comparar:hover {
-    background-color: #0a3345;
+background-color: #0a3345;
+}
+
+.boton-comparar.disabled {
+background-color: #c0c7d2;
+cursor: not-allowed;
 }

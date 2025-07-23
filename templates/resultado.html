@@ -9,21 +9,33 @@
 
     <header>
         <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
-        <a href="{{ url_for('subir') }}" class="volver-btn">
-            <img src="{{ url_for('static', filename='img/FlechaVolver_Btn.png') }}" alt="Volver">
-        </a>
     </header>
 
     <main>
-        <h1>Resultados de la comparación</h1>
+        <section class="container-resultados">
 
-        <section class="resultado">
-            <p><strong>Similitud:</strong> {{ similitud }}</p>
-            <p><strong>Feedback:</strong> {{ feedback }}</p>
-            <p><strong>Sugerencias:</strong></p>
-            <div class="sugerencias-box">
-                {{ sugerencias | safe }}
+            <!-- Caja izquierda (contenido a futuro) -->
+            <div class="cv-box">
+                <div class="cv-header"></div>
+                <div class="cv-content">
+                    <!-- Aquí en el futuro irá el contenido comparado -->
+                </div>
             </div>
+
+            <!-- Caja derecha -->
+            <div class="info-box">
+                <div class="similitud-box">
+                    {{ similitud }}
+                </div>
+
+                <h2>Feedback:</h2>
+                <div class="feedback-box">
+                    {{ feedback }}
+                </div>
+
+                <a href="{{ url_for('subir') }}" class="btn-volver">Volver al menú principal</a>
+            </div>
+
         </section>
     </main>
 

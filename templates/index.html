@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Comparador de CV</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="UTF-8">
+<title>Comparador de CV</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header class="header">
-        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
-        <a href="/" class="home-button">
-            <img src="{{ url_for('static', filename='img/Home_Btn.png') }}" alt="Home">
-        </a>
-    </header>
+<header class="header">
+    <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
+    <a href="/" class="home-button">
+    <img src="{{ url_for('static', filename='img/Home_Btn.png') }}" alt="Home">
+    </a>
+</header>
 
-    <main class="formulario">
-        <h1>Comparador de CV y Requisitos</h1>
+<main class="formulario">
+    <form action="{{ url_for('comparar') }}" method="post" enctype="multipart/form-data" class="formulario-contenedor">
+    <div class="upload-boxes">
+    <div class="upload-section">
+        <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
+        <div class="drop-area">
+            <input type="file" id="requisitos" name="requisitos" accept="application/pdf" required onchange="actualizarEstado(this)">
+            <span class="file-name">Subir archivos</span>
+        </div>
+        </div>
 
-        <form action="{{ url_for('comparar') }}" method="post" enctype="multipart/form-data" class="formulario-contenedor">
-            <div class="upload-boxes">
-                <div class="upload-section">
-                    <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
-                    <div class="drop-area">
-                        <input type="file" id="requisitos" name="requisitos" accept="application/pdf" required onchange="mostrarNombre(this)">
-                        <span class="file-name">Ningún archivo seleccionado</span>
-                    </div>
-                </div>
+        <div class="upload-section">
+        <label for="cv" class="upload-label">Sube tu CV:</label>
+        <div class="drop-area">
+            <input type="file" id="cv" name="cv" accept="application/pdf" required onchange="actualizarEstado(this)">
+            <span class="file-name">Subir currículum</span>
+        </div>
+        </div>
+    </div>
 
-                <div class="upload-section">
-                    <label for="cv" class="upload-label">Sube tu CV :</label>
-                    <div class="drop-area">
-                        <input type="file" id="cv" name="cv" accept="application/pdf" required onchange="mostrarNombre(this)">
-                        <span class="file-name">Ningún archivo seleccionado</span>
-                    </div>
-                </div>
-            </div>
+    <div class="contador" id="contador">0/2</div>
 
-            <div class="boton-contenedor">
-                <input type="submit" value="COMPARAR" class="boton-comparar">
-            </div>
-        </form>
-    </main>
+    <div class="boton-contenedor">
+        <input type="submit" value="FALTAN ARCHIVOS" class="boton-comparar disabled" id="boton-comparar" disabled>
+    </div>
+    </form>
+</main>
 
-    <script>
-    function mostrarNombre(input) {
-        const fileNameSpan = input.nextElementSibling;
-        if (input.files.length > 0) {
-            fileNameSpan.textContent = input.files[0].name;
-        } else {
-            fileNameSpan.textContent = 'Ningún archivo seleccionado';
-        }
+<script>
+    function actualizarEstado(input) {
+    const span = input.nextElementSibling;
+    if (input.files.length > 0) {
+        span.textContent = input.files[0].name;
+    } else {
+        span.textContent = input.id === "cv" ? "Subir currículum" : "Subir archivos";
     }
-    </script>
+
+    const requisitos = document.getElementById("requisitos").files.length > 0;
+    const cv = document.getElementById("cv").files.length > 0;
+    const contador = document.getElementById("contador");
+    const boton = document.getElementById("boton-comparar");
+
+    const total = (requisitos ? 1 : 0) + (cv ? 1 : 0);
+    contador.textContent = `${total}/2`;
+
+    if (total === 2) {
+        boton.disabled = false;
+        boton.value = "COMPARAR";
+        boton.classList.remove("disabled");
+    } else {
+        boton.disabled = true;
+        boton.value = "FALTAN ARCHIVOS";
+        boton.classList.add("disabled");
+    }
+    }
+</script>
 </body>
 </html>
