@@ -18,7 +18,14 @@
             <div class="cv-box">
                 <div class="cv-header"></div>
                 <div class="cv-content">
-                    <!-- Aquí en el futuro irá el contenido comparado -->
+                    {% if sugerencias %}
+                        <h2>Sugerencias de mejora</h2>
+                        <div class="sugerencias">
+                            {{ sugerencias | safe }}
+                        </div>
+                    {% else %}
+                        <p><em>No se pudieron generar sugerencias automáticamente.</em></p>
+                    {% endif %}
                 </div>
             </div>
 

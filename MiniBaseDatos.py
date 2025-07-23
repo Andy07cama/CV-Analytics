@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import LectorDeTextos
 from ComparadorDeTexto import comparar_textos
-#import google.generativeai as genai
+import google.generativeai as genai
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
@@ -12,7 +12,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 try:
     
-    API_KEY = "" 
+    API_KEY = "..." 
     
     if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
         print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
@@ -34,25 +34,24 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
         return "Error de Configuración\nNo se pueden generar sugerencias porque la clave de API de Gemini no ha sido configurada correctamente en el archivo `MiniBaseDatos.py`."
 
     prompt = f"""
-    Rol: Eres un asistente experto en Recursos Humanos y un coach de carrera profesional.
+    Rol: Eres un asistente experto en Recursos Humanos y especialista en selector de carrera profesional.
 
-    Tarea: Analiza el siguiente currículum (CV) en el contexto de los requisitos para un puesto de trabajo. Tu objetivo es proporcionar consejos constructivos y accionables para que el candidato pueda mejorar su CV y aumentar sus posibilidades de ser seleccionado.
+    Tarea: Analiza el siguiente currículum (texto_cv) en el contexto de los requisitos para el puesto de trabajo (texto_req). Tu objetivo es proporcionar consejos constructivos en lista y enumerados y accionables para que el candidato pueda mejorar su CV y aumentar sus posibilidades de ser seleccionado.
 
     Contexto:
-    ---
     CV DEL CANDIDATO:
     {texto_cv}
-    ---
     REQUISITOS DEL PUESTO:
     {texto_req}
-    ---
 
     Instrucciones para la respuesta:
     1.  No inventes información: Basa tus sugerencias únicamente en la información proporcionada.
     2.  Sé constructivo: Enfócate en cómo mejorar y adaptar lo que ya existe, en lugar de solo señalar las carencias.
-    3.  Formato de Salida: Genera la respuesta en formato Markdown. Usa un encabezado principal y una lista de viñetas para las sugerencias. Cada sugerencia debe ser clara y explicar el "porqué" del cambio.
+    3.  Formato de Salida: Genera la respuesta en formato Markdown. Usa un encabezado principal y una lista de viñetas para las sugerencias. Cada sugerencia debe ser clara y explicar el "porqué" del cambio. Hacelo en lista mostrando 1./n 2./n y asi consecutivamente
+    4.  Da solo 5 sugerencias no más
+    5.  Al final de todo en un parrafo aparte pone lo que vos crees que tienen de acierto. Es decir, el porcentaje de probabilidad de que sea contratado para el trabajo con el cv actual.
 
-    Ahora, genera las sugerencias para el CV y los requisitos proporcionados.
+    Ahora, genera las sugerencias para el CV y los requisitos proporcionados con las intrucciones proporcionadas.
     """
 
     try:
@@ -61,7 +60,7 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
         return response.text
     except Exception as e:
         print(f"[❗] Error al generar sugerencias con Gemini: {e}")
-        error_message = f"⚠️ Error al contactar la API de Gemini\nNo se pudieron generar las sugerencias.\n\n**Detalle del error:** {str(e)}"
+        error_message = f"⚠️ Error al contactar la API de Gemini\nNo se pudieron generar las sugerencias.\n\nDetalle del error: {str(e)}"
         return error_message
 
 # --- RUTAS DE LA APLICACIÓN ---

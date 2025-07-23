@@ -130,3 +130,17 @@ h2 {
         box-sizing: border-box;
     }
 }
+
+
+.sugerencias {
+    padding: 10px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+.sugerencias h1, .sugerencias h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.sugerencias ul {
+    padding-left: 20px;
+}
