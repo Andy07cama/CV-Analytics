@@ -31,32 +31,57 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     Usa la API de Gemini para generar sugerencias de mejora para el CV con un prompt detallado.
     """
     if not API_KEY:
-        return "Error de Configuración\nNo se pueden generar sugerencias porque la clave de API de Gemini no ha sido configurada correctamente en el archivo `MiniBaseDatos.py`."
+        return "⚠️ Error de Configuración\nNo se pueden generar sugerencias porque la clave de API de Gemini no ha sido configurada correctamente en el archivo `MiniBaseDatos.py`."
 
     prompt = f"""
-    Rol: Eres un asistente experto en Recursos Humanos y especialista en selector de carrera profesional.
+    Rol: Eres un asistente experto en Recursos Humanos y un coach de carrera profesional. Tu tono debe ser profesional, alentador y constructivo.
 
-    Tarea: Analiza el siguiente currículum (texto_cv) en el contexto de los requisitos para el puesto de trabajo (texto_req). Tu objetivo es proporcionar consejos constructivos en lista y enumerados y accionables para que el candidato pueda mejorar su CV y aumentar sus posibilidades de ser seleccionado.
+    Tarea Principal: Analizar un CV en comparación con los requisitos de un puesto y generar un informe claro y accionable.
 
-    Contexto:
+    Documentos para Análisis:
+    ---
     CV DEL CANDIDATO:
     {texto_cv}
+    ---
     REQUISITOS DEL PUESTO:
     {texto_req}
+    ---
 
-    Instrucciones para la respuesta:
-    1.  No inventes información: Basa tus sugerencias únicamente en la información proporcionada.
-    2.  Sé constructivo: Enfócate en cómo mejorar y adaptar lo que ya existe, en lugar de solo señalar las carencias.
-    3.  Formato de Salida: Genera la respuesta en formato Markdown. Usa un encabezado principal y una lista de viñetas para las sugerencias. Cada sugerencia debe ser clara y explicar el "porqué" del cambio. Hacelo en lista mostrando 1./n 2./n y asi consecutivamente
-    4.  Da solo 5 sugerencias no más
-    5.  Al final de todo en un parrafo aparte pone lo que vos crees que tienen de acierto. Es decir, el porcentaje de probabilidad de que sea contratado para el trabajo con el cv actual.
+    FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
+    Usa saltos de línea dobles (párrafos separados) entre cada punto de la lista.
+    NO uses NINGÚN carácter de formato Markdown. No incluyas `#`, `*`, `-`, o cualquier otro símbolo de formato.
+    La salida debe ser texto plano, estructurado exactamente como se describe a continuación.
+    
+    ESTRUCTURA EXACTA DE LA RESPUESTA:
 
-    Ahora, genera las sugerencias para el CV y los requisitos proporcionados con las intrucciones proporcionadas.
+    Sugerencias para Mejorar tu Perfil:
+
+    1. [Aquí va la primera sugerencia, redactada en un párrafo completo. Explica el qué y el porqué de la sugerencia, conectando el CV con los requisitos del puesto.] n/
+
+    2. [Aquí va la segunda sugerencia, en su propio párrafo.] n/
+
+    3. [Aquí va la tercera sugerencia, en su propio párrafo.] n/ 
+
+    4. [Aquí va la cuarta sugerencia, en su propio párrafo.] n/
+
+    5. [Aquí va la quinta y última sugerencia, en su propio párrafo.] n/
+ 
+    Evaluación Final:
+    [En este párrafo final, proporciona una breve evaluación profesional sobre la adecuación general del candidato para el puesto y ofrece un porcentaje estimado de compatibilidad basado en tu análisis experto.]
+
+    Instrucciones Adicionales sobre el Contenido:
+    Sé Específico: No des consejos genéricos. Basa cada sugerencia en una discrepancia o área de mejora que observes entre el CV y los requisitos.
+    Sé Constructivo: Enfócate en cómo el candidato puede adaptar y resaltar mejor su experiencia actual.
+    Límite: Proporciona exactamente 5 sugerencias.
+    No Inventes: Basa todo tu análisis estrictamente en los textos proporcionados.
+
+    Ahora, genera el informe siguiendo todas estas instrucciones al pie de la letra.
     """
 
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt)
+        # No es necesario procesar el texto, ya que le hemos pedido a la IA que lo genere limpio.
         return response.text
     except Exception as e:
         print(f"[❗] Error al generar sugerencias con Gemini: {e}")
