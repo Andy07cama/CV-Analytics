@@ -1,5 +1,8 @@
 import pdfplumber
 import re
+import unicodedata
+from datetime import datetime
+
 
 def extraer_texto_pdf(ruta_pdf):
     texto = ""
@@ -8,79 +11,101 @@ def extraer_texto_pdf(ruta_pdf):
             texto += pagina.extract_text() + "\n"
     return texto
 
+def normalizar_texto(texto: str) -> str:
+    """
+    Normaliza: pasa a minúsculas, elimina acentos/diacríticos y 
+    conserva solo letras, dígitos, espacios y separadores útiles (/-:).
+    Colapsa espacios múltiples a 1.
+    """
+    if not isinstance(texto, str):
+        return ""
+    t = texto.lower()
+    t = unicodedata.normalize("NFKD", t)
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    t = re.sub(r"[^a-z0-9 /\-:]", " ", t)   # conserva / - :
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
 
-def extraer_edad(texto):
-    coincidencias = re.findall(r'Edad\s*[:\-]?\s*(\d{2})', texto)
-    if coincidencias:
-        return coincidencias[0]
+def _calcular_edad(fecha_nac: datetime.date) -> int:
+    hoy = datetime.now().date()
+    return hoy.year - fecha_nac.year - ((hoy.month, hoy.day) < (fecha_nac.month, fecha_nac.day))
+
+def extraer_edad(texto: str) -> str:
+    """
+    Estrategia:
+    1) Busca 'edad: XX' (o variaciones con 'años/anios/years').
+    2) Si no, intenta fecha de nacimiento en formato dd/mm/yyyy o dd-mm-yyyy.
+    3) Si no, intenta '15 marzo 1998' (nombre de mes).
+    4) Si no, intenta un año suelto junto a 'nacimiento'/'f. nac'.
+    Devuelve str con la edad o 'No especificada'.
+    """
+    t = normalizar_texto(texto)
+
+    # 1) EDAD DIRECTA: 'edad: 28', 'edad 28 anos'
+    m = re.search(r"\bedad\s*[:\-]?\s*(\d{1,2})\s*(?:anos|anios|years)?\b", t)
+    if m:
+        try:
+            edad = int(m.group(1))
+            if 14 <= edad <= 99:
+                return str(edad)
+        except ValueError:
+            pass
+
+    # 2) FECHA DE NACIMIENTO NUMERICA: 'fecha de nacimiento: 01/05/1995' o '15-08-2000'
+    m = re.search(
+        r"\b(?:fecha\s*de\s*nacimiento|nacimiento|f\s*\.?\s*nac)\s*[:\-]?\s*(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})\b",
+        t
+    )
+    if m:
+        d, mo, y = m.groups()
+        try:
+            d, mo, y = int(d), int(mo), int(y)
+            if y < 100:  # Manejo de año a 2 dígitos (opcional)
+                y += 1900 if y > (datetime.now().year % 100) else 2000
+            fecha = datetime(y, mo, d).date()
+            edad = _calcular_edad(fecha)
+            if 14 <= edad <= 99:
+                return str(edad)
+        except ValueError:
+            pass
+
+    # 3) FECHA CON NOMBRE DE MES: '15 marzo 1998', con o sin prefijo 'nacimiento'
+    meses = {
+        "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+        "julio": 7, "agosto": 8, "septiembre": 9, "setiembre": 9, "octubre": 10,
+        "noviembre": 11, "diciembre": 12
+    }
+    m = re.search(
+        r"\b(?:fecha\s*de\s*nacimiento|nacimiento|nacido(?:a)?\s*el)?\s*[:\-]?\s*(\d{1,2})\s+"
+        r"(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)\s+(\d{4})\b",
+        t
+    )
+    if m:
+        try:
+            d = int(m.group(1))
+            mo = meses[m.group(2)]
+            y = int(m.group(3))
+            fecha = datetime(y, mo, d).date()
+            edad = _calcular_edad(fecha)
+            if 14 <= edad <= 99:
+                return str(edad)
+        except ValueError:
+            pass
+
+    # 4) SOLO AÑO CERCA DE 'NACIMIENTO' (evita confundir años de empleo/estudios)
+    m = re.search(r"\b(?:fecha\s*de\s*nacimiento|nacimiento|f\s*\.?\s*nac)\s*[:\-]?\s*(\d{4})\b", t)
+    if m:
+        try:
+            y = int(m.group(1))
+            # Tomamos 1 de julio como aproximación para evitar sesgo por mes/día desconocidos
+            fecha = datetime(y, 7, 1).date()
+            edad = _calcular_edad(fecha)
+            if 14 <= edad <= 99:
+                return str(edad)
+        except ValueError:
+            pass
+
     return "No especificada"
-
-#import unicodedata
-#from datetime import datetime
-
-def extraer_texto_pdf(ruta_pdf):
-    texto = ""
-    with pdfplumber.open(ruta_pdf) as pdf:
-        for pagina in pdf.pages:
-            texto += pagina.extract_text() + "\n"
-    return texto
-
-#def normalizar_texto(texto):
- #   texto = texto.lower()
-  #  texto = "".join(c for c in texto if c.isalnum() or c.isspace())
-   # texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode("utf-8")
-    #texto = re.sub(r"\s+", "" , texto).strip()
-    #return texto
-
-#def extraer_edad(texto):
- #   texto_normalizado = normalizar_texto(texto)
-    
-  #  coincidencias_edad = re.findall(r"edad\s*[:\-]?\s*(\d{1,2})\s*(?:anos|anios|years)?", texto_normalizado)
-   # if coincidencias_edad:
-    #    return coincidencias_edad[0]
-
-    #patrones_fecha_nacimiento = 
-    #[
-     #   r"fecha de nacimiento\s*[:\-]?\s*(\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4})",
-      #  r"nacimiento\s*[:\-]?\s*(\d{1,2}\s*(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s*\d{4})",
-       # r"(\d{4})"
-    #]
-    
-    #for patron in patrones_fecha_nacimiento:
-     #   coincidencias_fecha = re.findall(patron, texto_original.lower())
-      #  if coincidencias_fecha:
-       #     fecha_str = coincidencias_fecha[0]
-        #    try:
-         #       if re.match(r"\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4}", fecha_str):
-          #          if "-" in fecha_str:
-           #             fecha_nac = datetime.strptime(fecha_str, "%d-%m-%Y")
-            #        else:
-             #           fecha_nac = datetime.strptime(fecha_str, "%d/%m/%Y")
-              #  elif re.match(r"\d{1,2}\s*(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s*\d{4}", fecha_str):
-               #     meses = {
-                #        'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4, 'mayo': 5, 'junio': 6,
-                 #       'julio': 7, 'agosto': 8, 'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12
-                  #  }
-                   # partes = fecha_str.split()
-                    #dia = int(partes[0])
-                    #mes = meses[partes[1]]
-                    #año = int(partes[2])
-                    #fecha_nac = datetime(anio, mes, dia)
-                #elif re.match(r"\d{4}", fecha_str) and len(fecha_str) == 4:
-                 #   anio_nac = int(fecha_str)
-                  #  edad_calc = datetime.now().year - anio_nac
-                   # if 18 <= edad_calc <= 99:
-                    #    return str(edad_calc)
-                    #continue
-
-                #today = datetime.now()
-                #edad_calc = today.year - fecha_nac.year - ((today.month, today.day) < (fecha_nac.month, fecha_nac.day))
-                #if 18 <= edad_calc <= 99:
-                 #   return str(edad_calc)
-            #except ValueError:
-             #   pass
-    #return "No especificada"
-
 
 def extraer_estudios(texto):
     estudios = []
