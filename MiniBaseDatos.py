@@ -12,7 +12,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 try:
     
-    API_KEY = "..." 
+    API_KEY = "AIzaSyDda1OWyAddH2h5p3Aolgxek7ISQtpXeIw" 
     
     if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
         print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
@@ -66,9 +66,6 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
 
     5. [Aquí va la quinta y última sugerencia, en su propio párrafo.] n/
  
-    Evaluación Final:
-    [En este párrafo final, proporciona una breve evaluación profesional sobre la adecuación general del candidato para el puesto y ofrece un porcentaje estimado de compatibilidad basado en tu análisis experto.]
-
     Instrucciones Adicionales sobre el Contenido:
     Sé Específico: No des consejos genéricos. Basa cada sugerencia en una discrepancia o área de mejora que observes entre el CV y los requisitos.
     Sé Constructivo: Enfócate en cómo el candidato puede adaptar y resaltar mejor su experiencia actual.

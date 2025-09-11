@@ -1,6 +1,4 @@
 flask
-nltk
-sentence-transformers
+google-generativeai
 pdfplumber
-scikit-learn
-google.generativeai
+werkzeug
