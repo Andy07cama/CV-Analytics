@@ -12,7 +12,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 try:
     
-    API_KEY = "AIzaSyDda10WyAddH2h5p3Ao1gxek7ISQtpXeIw" 
+    API_KEY = "IzaSyC0dX88gADpaMff7WJs2x7Iw2iD-mzM16I" 
     
     if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
         print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
@@ -48,31 +48,41 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     ---
 
     FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
-    Usa saltos de línea dobles (párrafos separados) entre cada punto de la lista.
-    NO uses NINGÚN carácter de formato Markdown. No incluyas `#`, `*`, `-`, o cualquier otro símbolo de formato.
-    La salida debe ser texto plano, estructurado exactamente como se describe a continuación.
-    
+    - Usa un salto de línea doble (dos veces enter) para separar cada sugerencia.
+    - No uses guiones, asteriscos, o cualquier otro carácter de lista.
+    - La salida debe ser texto plano con una lista numerada del 1 al 5.
+
     ESTRUCTURA EXACTA DE LA RESPUESTA:
 
     Sugerencias para Mejorar tu Perfil:
 
-    1. [Aquí va la primera sugerencia, redactada en un párrafo completo. Explica el qué y el porqué de la sugerencia, conectando el CV con los requisitos del puesto.] n/
+    1. [Aquí va la primera sugerencia en un párrafo completo, explicando el qué y el porqué. Basa esta sugerencia en una discrepancia entre el CV y los requisitos.]
 
-    2. [Aquí va la segunda sugerencia, en su propio párrafo.] n/
+    [Salto de línea doble]
 
-    3. [Aquí va la tercera sugerencia, en su propio párrafo.] n/ 
+    2. [Aquí va la segunda sugerencia en su propio párrafo, siguiendo la misma lógica.]
 
-    4. [Aquí va la cuarta sugerencia, en su propio párrafo.] n/
+    [Salto de línea doble]
 
-    5. [Aquí va la quinta y última sugerencia, en su propio párrafo.] n/
- 
+    3. [Aquí va la tercera sugerencia en su propio párrafo.]
+
+    [Salto de línea doble]
+
+    4. [Aquí va la cuarta sugerencia en su propio párrafo.]
+
+    [Salto de línea doble]
+
+    5. [Aquí va la quinta y última sugerencia en su propio párrafo.]
+
+
     Instrucciones Adicionales sobre el Contenido:
     Sé Específico: No des consejos genéricos. Basa cada sugerencia en una discrepancia o área de mejora que observes entre el CV y los requisitos.
     Sé Constructivo: Enfócate en cómo el candidato puede adaptar y resaltar mejor su experiencia actual.
     Límite: Proporciona exactamente 5 sugerencias.
     No Inventes: Basa todo tu análisis estrictamente en los textos proporcionados.
 
-    Ahora, genera el informe siguiendo todas estas instrucciones al pie de la letra.
+    Ahora, genera el informe siguiendo todas estas instrucciones al pie de la letra, asegurando que cada punto esté separado por un espacio notable.
+    Hace los saltos de parrafo amplialos si necesitas pero q haya espacio entre uno y otro para que se vea más prolijo daleleeee negritooooo
     """
 
     try:
