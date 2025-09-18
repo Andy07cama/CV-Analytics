@@ -48,15 +48,13 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     ---
 
     FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
-    - Usa un salto de línea doble (dos veces enter) para separar cada sugerencia.
+    - Usa un salto de línea triple (cuatro veces enter) para separar cada sugerencia y se vea más claro y prolijo.
     - No uses guiones, asteriscos, o cualquier otro carácter de lista.
     - La salida debe ser texto plano con una lista numerada del 1 al 5.
 
     ESTRUCTURA EXACTA DE LA RESPUESTA:
 
-    Sugerencias para Mejorar tu Perfil:
-
-    1. [Aquí va la primera sugerencia en un párrafo completo, explicando el qué y el porqué. Basa esta sugerencia en una discrepancia entre el CV y los requisitos.]
+    1. [Aquí va la primera sugerencia en un párrafo, explicando el qué se debe mejorar. Basa esta sugerencia en una discrepancia entre el CV y los requisitos.]
 
     [Salto de línea doble]
 
@@ -74,11 +72,10 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
 
     5. [Aquí va la quinta y última sugerencia en su propio párrafo.]
 
-
     Instrucciones Adicionales sobre el Contenido:
-    Sé Específico: No des consejos genéricos. Basa cada sugerencia en una discrepancia o área de mejora que observes entre el CV y los requisitos.
+    Sé Específico: No des consejos genéricos. Basa cada sugerencia en una cualidad o área de mejora que observes entre el CV y los requisitos.
     Sé Constructivo: Enfócate en cómo el candidato puede adaptar y resaltar mejor su experiencia actual.
-    Límite: Proporciona exactamente 5 sugerencias.
+    Límite: Proporciona exactamente 5 sugerencias no muy largas, que como mucho sean 3 oraciones.
     No Inventes: Basa todo tu análisis estrictamente en los textos proporcionados.
 
     Ahora, genera el informe siguiendo todas estas instrucciones al pie de la letra, asegurando que cada punto esté separado por un espacio notable.
@@ -88,7 +85,6 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt)
-        # No es necesario procesar el texto, ya que le hemos pedido a la IA que lo genere limpio.
         return response.text
     except Exception as e:
         print(f"[❗] Error al generar sugerencias con Gemini: {e}")
