@@ -16,6 +16,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 
 API_KEY = os.getenv("GEMINI_API_KEY")  # Busca la clave en el entorno
+print("API Key detectada:", API_KEY)  # debug
 
 try:
     if not API_KEY:
