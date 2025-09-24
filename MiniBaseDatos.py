@@ -12,7 +12,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 try:
     
-    API_KEY = "IzaSyC0dX88gADpaMff7WJs2x7Iw2iD-mzM16I" 
+    API_KEY = "AIzaSyC0dX88gADpaMff7WJs2x7Iw2iD-mzM16I" 
     
     if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
         print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
@@ -48,7 +48,7 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     ---
 
     FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
-    - Usa un salto de línea triple (cuatro veces enter) para separar cada sugerencia y se vea más claro y prolijo.
+    - Usa un salto de línea triple (cinco veces enter) para separar cada sugerencia y se vea más claro y prolijo.
     - No uses guiones, asteriscos, o cualquier otro carácter de lista.
     - La salida debe ser texto plano con una lista numerada del 1 al 5.
 
