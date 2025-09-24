@@ -4,24 +4,29 @@ import os
 import LectorDeTextos
 from ComparadorDeTexto import comparar_textos
 import google.generativeai as genai
+from dotenv import load_dotenv
+
+# Cargar variables del archivo .env en local
+load_dotenv()
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'pdf'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
+
+API_KEY = os.getenv("GEMINI_API_KEY")  # Busca la clave en el entorno
+
 try:
-    
-    API_KEY = "IzaSyC0dX88gADpaMff7WJs2x7Iw2iD-mzM16I" 
-    
-    if not API_KEY or API_KEY == "TU_NUEVA_API_KEY":
-        print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en MiniBaseDatos.py.")
-        API_KEY = None
+    if not API_KEY:
+        print("ADVERTENCIA: No se ha configurado una clave de API de Gemini en el entorno.")
     else:
         genai.configure(api_key=API_KEY)
 except Exception as e:
     print(f"Error fatal al configurar la API de Gemini: {e}")
     API_KEY = None
+
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

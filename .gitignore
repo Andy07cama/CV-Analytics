@@ -1,3 +1,28 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivos de entorno
 .env
+
+# Cachés de Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de compilación / distribución
+*.egg-info/
+dist/
+build/
+
+# Archivos de logs
+*.log
+
+# Archivos de subida temporales
 uploads/
+
+# Configuración de editores
+.vscode/
+.idea/
