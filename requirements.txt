@@ -3,4 +3,4 @@ google-generativeai
 pdfplumber
 werkzeug
 gunicorn
-dotenv
+python-dotenv
