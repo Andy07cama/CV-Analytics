@@ -274,3 +274,426 @@ body {
 }
 
 .redes img { height: 25px; }
+
+
+
+
+
+
+
+
+
+
+/* ---------- RESET / BASE ---------- */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+:root{
+--bg: #fff;
+--text: #222;
+--muted: #444;
+--accent: #0B4B64;    /* botón / acento */
+--accent-dark: #083446;
+--card-bg: #fff;
+--card-shadow: rgba(0,0,0,0.12);
+--gap-header: 6rem;
+--max-width: 1200px;
+}
+
+/* smooth transitions for color/image swaps */
+*,
+*::before,
+*::after {
+transition: color 250ms ease, background-color 300ms ease, border-color 250ms ease, box-shadow 250ms ease, opacity 200ms ease;
+}
+
+body{
+background: var(--bg);
+color: var(--text);
+line-height: 1.6;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+background: transparent; /* keep header visually light, page bg controls look */
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 3rem;
+box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+/* logo variants: show/hide based on mode */
+.logo { height: 80px; display:block; }
+.logo-light { display: inline-block; }
+.logo-dark { display: none; }
+
+.nav {
+display: flex;
+align-items: center;
+gap: var(--gap-header);
+flex-wrap: wrap;
+}
+
+.nav a {
+text-decoration: none;
+color: var(--text);
+font-weight: 600;
+font-size: 1.05rem;
+letter-spacing: 0.2px;
+}
+
+.nav a:hover {
+color: #004080;
+}
+
+.modo-oscuro-btn {
+background: none;
+border: none;
+cursor: pointer;
+padding: 0;
+display: inline-flex;
+align-items: center;
+}
+.icono-modo { height: 40px; display:inline-block; }
+
+/* modo icon variants */
+.modo-light { display: inline-block; }
+.modo-dark { display: none; }
+
+/* ---------- HERO ---------- */
+.hero {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 3rem;
+padding: 8rem 6rem;
+flex-wrap: wrap;
+max-width: 1600px;
+margin: 0 auto;
+}
+
+.hero-texto {
+flex: 1;
+min-width: 320px;
+text-align: left;
+}
+
+.hero-texto h1{
+font-size: 4.2rem;
+font-weight: 800;
+color: var(--text);
+line-height: 1.02;
+margin-bottom: .6rem;
+}
+
+.hero-texto p{
+font-size: 1.3rem;
+color: var(--muted);
+margin-bottom: 1.5rem;
+}
+
+.btn-principal {
+display: inline-block;
+padding: 1rem 2rem;
+background: var(--accent);
+color: #fff;
+font-size: 1.6rem;
+font-weight: 600;
+border-radius: 12px;
+text-decoration: none;
+border: 2px solid transparent;
+}
+
+.btn-principal:hover {
+background: var(--accent-dark);
+}
+
+/* hero image variants */
+.hero-imagen {
+flex: 1;
+max-width: 450px;
+width: 100%;
+display: block;
+}
+
+/* hero-light visible by default, hero-dark hidden until dark-mode */
+.hero-light { display: block; }
+.hero-dark { display: none; }
+
+/* ---------- COMO FUNCIONA (cards estaticas) ---------- */
+.como-funciona{
+padding: 4rem 2rem;
+text-align: center;
+max-width: var(--max-width);
+margin: 0 auto;
+}
+
+.como-funciona h2{
+font-size: 2.6rem;
+margin-bottom: 3.2rem;
+color: var(--text);
+font-weight: 700;
+}
+
+.pasos {
+display: flex;
+justify-content: center;
+gap: 5rem;         /* espacio fijo entre cajas */
+flex-wrap: wrap;
+max-width: var(--max-width);
+margin: 0 auto;
+}
+
+.paso {
+width: 280px;      /* ancho fijo (no se estiran) */
+min-height: 220px;
+background: var(--card-bg);
+border-radius: 12px;
+box-shadow: 0 8px 18px var(--card-shadow);
+padding: 2rem 1.5rem;
+text-align: center;
+flex: none;        /* evita estirado */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+/* images variants inside paso */
+.paso img { height: 80px; margin-bottom: 1rem; display:block; }
+.paso .paso-light { display:block; }
+.paso .paso-dark { display:none; }
+
+.paso p {
+font-size: 1rem;
+font-weight: 600;
+color: var(--text);
+}
+
+/* ---------- BENEFICIOS ---------- */
+.beneficios{
+padding: 4rem 2rem;
+text-align: center;
+max-width: var(--max-width);
+margin: 0 auto;
+}
+
+.beneficios h2{
+font-size: 2.6rem;
+margin-bottom: 3.2rem;
+color: var(--text);
+font-weight: 700;
+}
+
+.iconos-beneficios{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 2.5rem;
+max-width: var(--max-width);
+margin: 0 auto;
+align-items: start;
+}
+
+.iconos-beneficios div{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:.6rem;
+}
+
+.iconos-beneficios img{ height:70px; display:block; }
+.iconos-beneficios .beneficio-light{ display:block; }
+.iconos-beneficios .beneficio-dark{ display:none; }
+
+.iconos-beneficios p{
+font-size: 1rem;
+font-weight: 600;
+color: var(--text);
+}
+
+/* ---------- FRASE ---------- */
+.frase{
+padding: 6rem 2rem;
+text-align: center;
+font-size: 2rem;
+font-style: italic;
+background: transparent;
+color: var(--text);
+}
+
+.frase span { color: #004080; font-weight:700; }
+
+/* ---------- FOOTER ---------- */
+.footer{
+background: #002244;
+color: #fff;
+padding: 2.5rem 3rem;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:1.5rem;
+}
+
+.footer-left { display:flex; align-items:center; gap:1rem; }
+.logo-footer { height:40px; }
+
+/* footer logo variants */
+.logo-footer.logo-dark { display:none; }  /* in normal mode show light logo (white logo hidden) */
+.logo-footer.logo-light { display:block; }
+
+/* links center */
+.footer-links {
+display:flex;
+gap:2rem;
+justify-content:center;
+align-items:center;
+flex:1;
+}
+
+.footer-links a {
+text-decoration:none;
+color: #ddd;
+font-size:1rem;
+cursor: default;
+}
+
+.footer-links a:hover {
+text-decoration: underline;
+color: #fff;
+}
+
+.footer-contacto {
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:.5rem;
+}
+
+.redes { display:flex; gap:1rem; align-items:center; }
+.contacto-light { display:block; }
+.contacto-dark { display:none; }
+.footer-contacto a { color: #ddd; text-decoration:none; }
+
+/* ---------- RESPONSIVE / ADAPTACIONES ---------- */
+@media (max-width: 1200px){
+.hero { padding: 6.5rem 3.5rem; gap: 2.5rem; }
+:root { --gap-header: 4rem; }
+}
+
+@media (max-width: 1000px){
+.nav { gap: 3rem; }
+.hero { padding: 5.5rem 2.5rem; }
+}
+
+@media (max-width: 800px){
+.nav { gap: 2rem; justify-content:center; }
+.hero { padding: 4.5rem 2rem; }
+.hero-texto h1 { font-size: 2.6rem; }
+.btn-principal { font-size: 1.2rem; padding:.9rem 1.6rem; }
+}
+
+@media (max-width: 600px){
+.nav { gap: 1rem; }
+.hero { padding: 3.2rem 1.2rem; flex-direction: column-reverse; text-align:center; }
+.hero-texto { text-align:center; }
+.hero-texto h1 { font-size: 2.2rem; }
+.pasos { gap: 2rem; }
+.footer { padding: 2rem 1.2rem; text-align:center; }
+.footer-contacto { align-items:center; }
+.footer-links { order: 3; width: 100%; justify-content:center; }
+.footer-left { order: 1; width: 100%; justify-content:center; }
+}
+
+/* ---------- DARK MODE: applied when <body class="dark-mode"> ---------- */
+/* base dark adjustments */
+body.dark-mode{
+background: linear-gradient(180deg, #07202b 0%, #0f3b4b 60%, #07202b 100%);
+color: #f6fbff;
+}
+
+/* switch logos + icons */
+body.dark-mode .logo-light { display: none; }
+body.dark-mode .logo-dark { display: inline-block; }
+
+body.dark-mode .logo-footer.logo-light { display: none; }
+body.dark-mode .logo-footer.logo-dark { display: block; }
+
+body.dark-mode .modo-light { display: none; }
+body.dark-mode .modo-dark { display: inline-block; }
+
+/* hero: text + button + image */
+body.dark-mode .hero-texto h1,
+body.dark-mode .hero-texto p {
+color: #f7fbff;
+}
+
+body.dark-mode .btn-principal {
+background: transparent;
+color: #fff;
+border: 2px solid rgba(255,255,255,0.85);
+}
+
+body.dark-mode .hero-light { display: none; }
+body.dark-mode .hero-dark { display: block; }
+
+/* pasos: new color + shadow variant + icons white */
+body.dark-mode .paso {
+background: rgba(10,30,40,0.55); /* darker card */
+box-shadow: 0 10px 30px rgba(3,83,101,0.16); /* colored shadow */
+border: 1px solid rgba(255,255,255,0.04);
+}
+
+body.dark-mode .paso p { color: #e8f7ff; }
+
+/* paso images: hide light, show dark */
+body.dark-mode .paso .paso-light { display:none; }
+body.dark-mode .paso .paso-dark { display:block; }
+
+/* beneficios: text white + images swap */
+body.dark-mode .beneficios h2,
+body.dark-mode .iconos-beneficios p {
+color: #f6fbff;
+}
+
+body.dark-mode .beneficio-light { display:none; }
+body.dark-mode .beneficio-dark { display:block; }
+
+/* frase: gradient + color */
+body.dark-mode .frase {
+background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+color: #f3fbff;
+}
+body.dark-mode .frase span { color: #9fd8ff; }
+
+/* footer: switch to white with dark text (as requested) */
+body.dark-mode .footer {
+background: #ffffff;
+color: #0a3040;
+box-shadow: 0 -2px 24px rgba(2,16,20,0.04);
+}
+
+body.dark-mode .footer-links a { color: #0a3040; }
+body.dark-mode .footer-links a:hover { color: #00334d; }
+body.dark-mode .contacto-light { display:none; }
+body.dark-mode .contacto-dark { display:block; }
+
+/* small visual polish for dark mode: increase contrast of nav links */
+body.dark-mode .nav a { color: #f7fbff; }
+body.dark-mode .nav a:hover { color: #dbefff; }
+
+/* ---------- optional: focus + accessibility ---------- */
+a:focus, button:focus {
+outline: 3px solid rgba(11,75,100,0.22);
+outline-offset: 3px;
+}

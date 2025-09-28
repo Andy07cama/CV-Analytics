@@ -5,18 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CV Analytics - Inicio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylePantallaPrincipal.css') }}">
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 </head>
 <body>
 
     <!-- HEADER -->
     <header class="header">
-        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics Logo" class="logo">
+        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics Logo" class="logo logo-light">
+        <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo Blanco" class="logo logo-dark">
         <nav class="nav">
             <a href="#">Filtrado de CV</a>
             <a href="#">Cómo funciona</a>
             <a href="#">Beneficios clave</a>
-            <button class="modo-oscuro-btn">
-                <img src="{{ url_for('static', filename='img/Boton Luz.png') }}" alt="Botón modo oscuro" class="icono-modo">
+            <button class="modo-oscuro-btn" onclick="toggleDarkMode()">
+                <img src="{{ url_for('static', filename='img/Boton Luz.png') }}" alt="Modo claro" class="icono-modo modo-light">
+                <img src="{{ url_for('static', filename='img/Boton Oscuro.png') }}" alt="Modo oscuro" class="icono-modo modo-dark">
             </button>
         </nav>
     </header>
@@ -28,7 +35,8 @@
             <p>Tu currículum, mejorado con inteligencia artificial</p>
             <a href="{{ url_for('subir') }}" class="btn-principal">MEJORAR MI CV</a>
         </div>
-        <img src="{{ url_for('static', filename='img/CV Cerebro.png') }}" alt="Imagen principal" class="hero-imagen">
+        <img src="{{ url_for('static', filename='img/CV Cerebro.png') }}" alt="Imagen principal" class="hero-imagen hero-light">
+        <img src="{{ url_for('static', filename='img/CV Cerebro Borde.png') }}" alt="Imagen principal borde" class="hero-imagen hero-dark">
     </section>
 
     <!-- COMO FUNCIONA -->
@@ -36,15 +44,18 @@
         <h2>Cómo funciona</h2>
         <div class="pasos">
             <div class="paso">
-                <img src="{{ url_for('static', filename='img/Subir CV.png') }}" alt="Subir CV">
+                <img src="{{ url_for('static', filename='img/Subir CV.png') }}" alt="Subir CV" class="paso-light">
+                <img src="{{ url_for('static', filename='img/Subir CV Blanco.png') }}" alt="Subir CV Blanco" class="paso-dark">
                 <p>1. Subir tu CV y oferta de trabajo</p>
             </div>
             <div class="paso">
-                <img src="{{ url_for('static', filename='img/Analisis IA.png') }}" alt="Análisis IA">
+                <img src="{{ url_for('static', filename='img/Analisis IA.png') }}" alt="Análisis IA" class="paso-light">
+                <img src="{{ url_for('static', filename='img/Analisis IA Blanco.png') }}" alt="Análisis IA Blanco" class="paso-dark">
                 <p>2. Análisis IA</p>
             </div>
             <div class="paso">
-                <img src="{{ url_for('static', filename='img/Feedback.png') }}" alt="Feedback">
+                <img src="{{ url_for('static', filename='img/Feedback.png') }}" alt="Feedback" class="paso-light">
+                <img src="{{ url_for('static', filename='img/Feedback Blanco.png') }}" alt="Feedback Blanco" class="paso-dark">
                 <p>3. Recibe feedback instantáneo</p>
             </div>
         </div>
@@ -55,19 +66,23 @@
         <h2>Beneficios clave</h2>
         <div class="iconos-beneficios">
             <div>
-                <img src="{{ url_for('static', filename='img/Fortalezas.png') }}" alt="Fortalezas">
+                <img src="{{ url_for('static', filename='img/Fortalezas.png') }}" alt="Fortalezas" class="beneficio-light">
+                <img src="{{ url_for('static', filename='img/Fortalezas Blanco.png') }}" alt="Fortalezas Blanco" class="beneficio-dark">
                 <p>Identifica tus fortalezas</p>
             </div>
             <div>
-                <img src="{{ url_for('static', filename='img/Cohete.png') }}" alt="Mejora posibilidades">
+                <img src="{{ url_for('static', filename='img/Cohete.png') }}" alt="Mejora posibilidades" class="beneficio-light">
+                <img src="{{ url_for('static', filename='img/Cohete Blanco.png') }}" alt="Mejora posibilidades Blanco" class="beneficio-dark">
                 <p>Mejora tus posibilidades</p>
             </div>
             <div>
-                <img src="{{ url_for('static', filename='img/Reloj.png') }}" alt="Ahorra tiempo">
+                <img src="{{ url_for('static', filename='img/Reloj.png') }}" alt="Ahorra tiempo" class="beneficio-light">
+                <img src="{{ url_for('static', filename='img/Reloj Blanco.png') }}" alt="Ahorra tiempo Blanco" class="beneficio-dark">
                 <p>Ahorra tiempo</p>
             </div>
             <div>
-                <img src="{{ url_for('static', filename='img/Varita.png') }}" alt="Reduce esfuerzo">
+                <img src="{{ url_for('static', filename='img/Varita.png') }}" alt="Reduce esfuerzo" class="beneficio-light">
+                <img src="{{ url_for('static', filename='img/Varita Blanco.png') }}" alt="Reduce esfuerzo Blanco" class="beneficio-dark">
                 <p>Reduce el esfuerzo</p>
             </div>
         </div>
@@ -81,7 +96,8 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-left">
-            <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo" class="logo-footer">
+            <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="Logo Blanco" class="logo-footer logo-dark">
+            <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="Logo Normal" class="logo-footer logo-light">
         </div>
 
         <div class="footer-links">
@@ -92,7 +108,8 @@
 
         <div class="footer-contacto">
             <div class="redes">
-                <a><img src="{{ url_for('static', filename='img/Contacto.png') }}" alt="Contacto"></a>
+                <img src="{{ url_for('static', filename='img/Contacto Blanco.png') }}" alt="Contacto" class="contacto-dark">
+                <img src="{{ url_for('static', filename='img/Contacto.png') }}" alt="Contacto Normal" class="contacto-light">
             </div>
             <a>Contáctate con nosotros</a>
         </div>
