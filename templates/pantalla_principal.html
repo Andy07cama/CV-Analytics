@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CV Analytics - Inicio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylePantallaPrincipal.css') }}">
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-    </script>
 </head>
 <body>
 
@@ -21,7 +16,7 @@
             <a href="#">Filtrado de CV</a>
             <a href="#">Cómo funciona</a>
             <a href="#">Beneficios clave</a>
-            <button class="modo-oscuro-btn" onclick="toggleDarkMode()">
+            <button class="modo-oscuro-btn">
                 <img src="{{ url_for('static', filename='img/Boton Luz.png') }}" alt="Modo claro" class="icono-modo modo-light">
                 <img src="{{ url_for('static', filename='img/Boton Oscuro.png') }}" alt="Modo oscuro" class="icono-modo modo-dark">
             </button>
@@ -96,8 +91,8 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-left">
-            <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="Logo Blanco" class="logo-footer logo-dark">
-            <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="Logo Normal" class="logo-footer logo-light">
+            <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="Logo Normal" class="logo-footer logo-light">
+            <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="Logo Blanco" class="logo-footer logo-dark">
         </div>
 
         <div class="footer-links">
@@ -108,12 +103,14 @@
 
         <div class="footer-contacto">
             <div class="redes">
-                <img src="{{ url_for('static', filename='img/Contacto Blanco.png') }}" alt="Contacto" class="contacto-dark">
                 <img src="{{ url_for('static', filename='img/Contacto.png') }}" alt="Contacto Normal" class="contacto-light">
+                <img src="{{ url_for('static', filename='img/Contacto Blanco.png') }}" alt="Contacto Blanco" class="contacto-dark">
             </div>
             <a>Contáctate con nosotros</a>
         </div>
     </footer>
 
+    <!-- Script externo -->
+    <script src="{{ url_for('static', filename='js/modoOscuro.js') }}"></script>
 </body>
 </html>
