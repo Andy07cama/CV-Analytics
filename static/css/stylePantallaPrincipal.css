@@ -1,231 +1,277 @@
 /* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #fdfdfd;
-    color: #222;
-    line-height: 1.6;
+background: #fff;
+color: #222;
+line-height: 1.6;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    flex-wrap: wrap;
+background: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 3rem;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
 }
 
 .logo {
-    height: 55px;
+height: 80px;
 }
 
 .nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+display: flex;
+align-items: center;
+gap: 15rem;
 }
 
 .nav a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #222;
+text-decoration: none;
+color: #222;
+font-weight: 500;
+transition: color 0.3s;
+font-size: large;
+}
+
+.nav a:hover {
+color: #004080;
 }
 
 .modo-oscuro-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
+background: none;
+border: none;
+cursor: pointer;
 }
 
 .icono-modo {
-    width: 32px;
-    height: 32px;
+height: 40px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 3rem;
+padding: 15rem 15rem;
+flex-wrap: wrap;
+}
+
+.hero-texto {
+flex: 1;
+min-width: 280px;
+text-align: left;
+}
+
+.hero-texto h1 {
+font-size: 4.5rem;
+font-weight: 800;
+color: #002244;
+margin-bottom: 1rem;
+}
+
+.hero-texto p {
+font-size: 1.5rem;
+margin-bottom: 2rem;
+color: #444;
+}
+
+.btn-principal {
+display: inline-block;
+padding: 1rem 2rem;
+background: #0B4B64;
+color: #fff;
+font-size: 3rem;
+font-weight: 500;
+border-radius: 12px;
+text-decoration: none;
+transition: background 0.3s;
+}
+
+.btn-principal:hover {
+background: #083446;
+}
+
+.hero-imagen {
+flex: 1;
+max-width: 400px;
+width: 100%;
+}
+
+/* ================= COMO FUNCIONA ================= */
+.como-funciona {
+padding: 4rem 2rem;
+text-align:center;
+}
+
+.como-funciona h2 {
+font-size: 3rem;
+margin-bottom: 5rem;
+color: #002244;
+font-weight: 600;
+}
+
+.pasos {
+display: flex;
+justify-content: space-between;
+gap: 10rem;
+flex-wrap: wrap;
+max-width: 1420px;
+margin: 0 auto;
+}
+
+.paso {
+flex: 1 1 250px;
+background: #fff;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+padding: 2rem 1.5rem;
+text-align: center;
+}
+
+.paso img {
+height: 80px;
+margin-bottom: 1rem;
+}
+
+.paso p {
+font-size: 1rem;
+font-weight: 500;
+color: #002244;
+}
+
+/* ================= BENEFICIOS ================= */
+.beneficios {
+padding: 4rem 2rem;
+text-align: center;
+}
+
+.beneficios h2 {
+font-size: 3rem;
+margin-bottom: 6rem;
+color: #002244;
+font-weight: 600;
+}
+
+.iconos-beneficios {
+display: flex;
+justify-content: space-between; /* más esparcidos */
+gap: 2rem;
+flex-wrap: wrap;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.iconos-beneficios div {
+flex: 1 1 220px;
+text-align: center;
+}
+
+.iconos-beneficios img {
+height: 70px;
+margin-bottom: 1rem;
+}
+
+.iconos-beneficios p {
+font-weight: 500;
+color: #002244;
+font-size: 1rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+.pasos,
+.iconos-beneficios {
+    justify-content: center;
+}
+}
+
+@media (max-width: 600px) {
+.iconos-beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en mobile */
+    gap: 1.5rem;
+}
+}
+
+
+/* ================= FRASE ================= */
+.frase {
+padding: 20rem 12rem;
+text-align: center;
+font-size: 4.5rem;
+font-style: italic;
+background: #fff;
+}
+
+.frase span {
+color: #004080;
+font-weight: 600;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #002244;
+    color: #fff;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 60px 20px;
-    gap: 30px;
-}
-
-.hero-texto {
-    flex: 1;
-    min-width: 280px;
-}
-
-.hero-texto h1 {
-    font-size: 40px;
-    color: #003049;
-    margin-bottom: 15px;
-}
-
-.hero-texto p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.btn-principal {
-    display: inline-block;
-    background: #004aad;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-principal:hover {
-    background: #00307d;
-}
-
-.hero-imagen {
-    flex: 1;
-    max-width: 400px;
-    border-radius: 12px;
-}
-
-/* COMO FUNCIONA */
-.como-funciona {
-    padding: 50px 20px;
-    text-align: center;
-    background: #f8f9fa;
-}
-
-.como-funciona h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-}
-
-.pasos {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.paso {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    flex: 1;
-    min-width: 220px;
-    max-width: 280px;
-}
-
-.paso img {
-    width: 50px;
-    margin-bottom: 10px;
-}
-
-/* BENEFICIOS */
-.beneficios {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.beneficios h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-}
-
-.iconos-beneficios {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.iconos-beneficios div {
-    text-align: center;
-    flex: 1;
-    min-width: 150px;
-}
-
-.iconos-beneficios img {
-    width: 45px;
-    margin-bottom: 10px;
-}
-
-/* FRASE */
-.frase {
-    padding: 60px 20px;
-    text-align: center;
-    background: linear-gradient(to top, #f8f9fa, #fff);
-}
-
-.frase blockquote {
-    font-size: 24px;
-    font-weight: bold;
-    color: #003049;
-}
-
-.frase span {
-    color: #0077b6;
-}
-
-/* FOOTER */
-.footer {
-    background: #003049;
-    color: #fff;
-    padding: 30px 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 2rem;
 }
 
 .logo-footer {
-    height: 50px;
+    height: 40px;
 }
 
-.footer-links, .footer-contacto {
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex: 1;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    cursor: default; /* No parece clickeable */
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-contacto {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    align-items: flex-end;
+    gap: 0.5rem;
 }
 
-.footer a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
+.footer-contacto p {
+    margin: 0;
+    font-size: 1rem;
 }
 
-.redes a img {
-    width: 24px;
-    margin-right: 8px;
+.redes {
+    display: flex;
+    gap: 1rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-texto h1 {
-        font-size: 32px;
-    }
-
-    .btn-principal {
-        width: 100%;
-        max-width: 250px;
-    }
-
-    .iconos-beneficios {
-        flex-direction: column;
-    }
+.redes img {
+    height: 25px;
 }

@@ -24,7 +24,7 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-texto">
-            <h1>OPTIMIZA TU FUTURO CON IA</h1>
+            <h1>OPTIMIZA TU <br> FUTURO CON IA</h1>
             <p>Tu currículum, mejorado con inteligencia artificial</p>
             <a href="{{ url_for('subir') }}" class="btn-principal">MEJORAR MI CV</a>
         </div>
@@ -79,21 +79,24 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
+<footer class="footer">
+    <div class="footer-left">
         <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo" class="logo-footer">
-        <div class="footer-links">
-            <a href="#">Nuestra misión</a>
-            <a href="#">Acerca de nosotros</a>
-            <a href="#">Política de privacidad</a>
+    </div>
+
+    <div class="footer-links">
+        <a>Nuestra misión</a>
+        <a>Acerca de nosotros</a>
+        <a>Política de privacidad</a>
+    </div>
+
+    <div class="footer-contacto">
+        <div class="redes">
+            <a><img src="{{ url_for('static', filename='img/Contacto.png') }}" alt="Contacto"></a>
         </div>
-        <div class="footer-contacto">
-            <a href="#">Contáctate con nosotros</a>
-            <div class="redes">
-                <a href="#"><img src="{{ url_for('static', filename='img/Group 195.png') }}" alt="Email"></a>
-                <a href="#"><img src="{{ url_for('static', filename='img/Group 195.png') }}" alt="LinkedIn"></a>
-            </div>
-        </div>
-    </footer>
+        <a>Contáctate con nosotros</a>
+    </div>
+</footer>
 
 </body>
 </html>
