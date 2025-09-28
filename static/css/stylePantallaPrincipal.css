@@ -14,7 +14,7 @@ body {
 
 /* ================= HEADER ================= */
 .header {
-    background: #fff;
+    background: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -320,13 +320,13 @@ line-height: 1.6;
 }
 
 /* ---------- HEADER ---------- */
-.header {
-background: transparent; /* keep header visually light, page bg controls look */
+body.dark-mode .header {
+background: #2C3E50;
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 1rem 3rem;
-box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+box-shadow: 0 2px 6px #2898C4;
 position: sticky;
 top: 0;
 z-index: 1000;
@@ -431,18 +431,16 @@ display: block;
 .hero-dark { display: none; }
 
 /* ---------- COMO FUNCIONA (cards estaticas) ---------- */
-.como-funciona{
+body.dark-mode.como-funciona{
 padding: 4rem 2rem;
-text-align: center;
-max-width: var(--max-width);
-margin: 0 auto;
+text-align:center;
 }
 
-.como-funciona h2{
-font-size: 2.6rem;
-margin-bottom: 3.2rem;
-color: var(--text);
-font-weight: 700;
+body.dark-mode .como-funciona h2{
+font-size: 3rem;
+margin-bottom: 5rem;
+color: white;
+font-weight: 600;
 }
 
 .pasos {
@@ -535,7 +533,6 @@ color: var(--text);
 
 /* ---------- FOOTER ---------- */
 .footer{
-background: #002244;
 color: #fff;
 padding: 2.5rem 3rem;
 display:flex;
@@ -618,7 +615,8 @@ gap:.5rem;
 /* ---------- DARK MODE: applied when <body class="dark-mode"> ---------- */
 /* base dark adjustments */
 body.dark-mode{
-background: linear-gradient(180deg, #07202b 0%, #0f3b4b 60%, #07202b 100%);
+background: #2C3E50;
+background: linear-gradient(180deg,rgba(44, 62, 80, 1) 33%, rgba(11, 75, 100, 1) 43%, rgba(11, 75, 100, 1) 75%, rgba(44, 62, 80, 1) 85%);
 color: #f6fbff;
 }
 
@@ -671,7 +669,6 @@ body.dark-mode .beneficio-dark { display:block; }
 
 /* frase: gradient + color */
 body.dark-mode .frase {
-background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
 color: #f3fbff;
 }
 body.dark-mode .frase span { color: #9fd8ff; }
