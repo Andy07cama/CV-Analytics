@@ -694,3 +694,37 @@ a:focus, button:focus {
 outline: 3px solid rgba(11,75,100,0.22);
 outline-offset: 3px;
 }
+
+
+
+/* Modo claro por defecto */
+.logo-dark,
+.hero-dark,
+.paso-dark,
+.beneficio-dark,
+.logo-footer.logo-dark,
+.contacto-dark,
+.modo-dark {
+display: none;
+}
+
+/* Modo oscuro */
+body.dark-mode .logo-light,
+body.dark-mode .hero-light,
+body.dark-mode .paso-light,
+body.dark-mode .beneficio-light,
+body.dark-mode .logo-footer.logo-light,
+body.dark-mode .contacto-light,
+body.dark-mode .modo-light {
+display: none;
+}
+
+body.dark-mode .logo-dark,
+body.dark-mode .hero-dark,
+body.dark-mode .paso-dark,
+body.dark-mode .beneficio-dark,
+body.dark-mode .logo-footer.logo-dark,
+body.dark-mode .contacto-dark,
+body.dark-mode .modo-dark {
+display: inline;
+}
