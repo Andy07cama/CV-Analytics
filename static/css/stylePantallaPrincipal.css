@@ -1,4 +1,4 @@
-/* Reset básico */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +7,9 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
+    background: #fdfdfd;
+    color: #222;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
 }
 
 /* HEADER */
@@ -17,123 +17,215 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px 25px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex-wrap: wrap;
 }
 
 .logo {
-    height: 60px;
+    height: 55px;
 }
 
 .nav {
     display: flex;
     gap: 20px;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .nav a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    font-weight: 600;
+    color: #222;
 }
 
 .modo-oscuro-btn {
     background: none;
     border: none;
-    font-size: 20px;
     cursor: pointer;
 }
 
-/* PRESENTACION */
-.presentacion {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    padding: 40px 20px;
-    gap: 30px;
+.icono-modo {
+    width: 32px;
+    height: 32px;
 }
 
-.presentacion .texto {
-    text-align: center;
-    max-width: 600px;
-}
-
-.presentacion h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.presentacion p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.insertar-cv-btn {
-    background-color: #004aad;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.insertar-cv-btn:hover {
-    background-color: #00307d;
-}
-
-.imagen-presentacion {
-    max-width: 90%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* MISIÓN */
-.mision {
-    background-color: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.mision h2 {
-    font-size: 26px;
-    margin-bottom: 10px;
-}
-
-.mision p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* FOOTER */
-.footer {
-    background-color: #004aad;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+/* HERO */
+.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    padding: 60px 20px;
+    gap: 30px;
+}
+
+.hero-texto {
+    flex: 1;
+    min-width: 280px;
+}
+
+.hero-texto h1 {
+    font-size: 40px;
+    color: #003049;
+    margin-bottom: 15px;
+}
+
+.hero-texto p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn-principal {
+    display: inline-block;
+    background: #004aad;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-principal:hover {
+    background: #00307d;
+}
+
+.hero-imagen {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 12px;
+}
+
+/* COMO FUNCIONA */
+.como-funciona {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.como-funciona h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.pasos {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.paso {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+}
+
+.paso img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+/* BENEFICIOS */
+.beneficios {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.beneficios h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.iconos-beneficios {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.iconos-beneficios div {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.iconos-beneficios img {
+    width: 45px;
+    margin-bottom: 10px;
+}
+
+/* FRASE */
+.frase {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to top, #f8f9fa, #fff);
+}
+
+.frase blockquote {
+    font-size: 24px;
+    font-weight: bold;
+    color: #003049;
+}
+
+.frase span {
+    color: #0077b6;
+}
+
+/* FOOTER */
+.footer {
+    background: #003049;
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo-footer {
+    height: 50px;
+}
+
+.footer-links, .footer-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.redes a img {
+    width: 24px;
+    margin-right: 8px;
 }
 
 /* RESPONSIVE */
-@media (min-width: 768px) {
-    .presentacion {
-        flex-direction: row;
-        justify-content: space-around;
-        text-align: left;
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .presentacion .texto {
-        max-width: 45%;
+    .hero-texto h1 {
+        font-size: 32px;
     }
 
-    .imagen-presentacion {
-        max-width: 45%;
+    .btn-principal {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .iconos-beneficios {
+        flex-direction: column;
     }
 }

@@ -8,36 +8,91 @@
 </head>
 <body>
 
-    <!-- Encabezado -->
+    <!-- HEADER -->
     <header class="header">
         <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics Logo" class="logo">
         <nav class="nav">
             <a href="#">Filtrado de CV</a>
-            <a href="#">Nuestra misión</a>
-            <a href="#">Ayuda</a>
-            <button class="modo-oscuro-btn">🌓</button>
+            <a href="#">Cómo funciona</a>
+            <a href="#">Beneficios clave</a>
+            <button class="modo-oscuro-btn">
+                <img src="{{ url_for('static', filename='img/Boton Luz.png') }}" alt="Botón modo oscuro" class="icono-modo">
+            </button>
         </nav>
     </header>
 
-    <!-- Sección principal -->
-    <section class="presentacion">
-        <div class="texto">
-            <h2>¿Necesitás ayuda para mejorar tu currículum?</h2>
-            <p>La página web número #1 para asistencia y mejora de CVs.</p>
-            <a href="{{ url_for('subir') }}" class="insertar-cv-btn">Insertar CV</a>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-texto">
+            <h1>OPTIMIZA TU FUTURO CON IA</h1>
+            <p>Tu currículum, mejorado con inteligencia artificial</p>
+            <a href="{{ url_for('subir') }}" class="btn-principal">MEJORAR MI CV</a>
         </div>
-        <img src="{{ url_for('static', filename='img/Foto_Pantalla_Principal.png') }}" alt="Manos estrechándose" class="imagen-presentacion">
+        <img src="{{ url_for('static', filename='img/CV Cerebro.png') }}" alt="Imagen principal" class="hero-imagen">
     </section>
 
-    <!-- Nuestra misión -->
-    <section class="mision">
-        <h2>Nuestra Misión</h2>
-        <p>En CV Analytics queremos ayudarte a llegar más lejos profesionalmente. Nuestro análisis automático compara tu currículum con los requisitos del puesto para mostrarte sugerencias claras.</p>
+    <!-- COMO FUNCIONA -->
+    <section class="como-funciona">
+        <h2>Cómo funciona</h2>
+        <div class="pasos">
+            <div class="paso">
+                <img src="{{ url_for('static', filename='img/Subir CV.png') }}" alt="Subir CV">
+                <p>1. Subir tu CV y oferta de trabajo</p>
+            </div>
+            <div class="paso">
+                <img src="{{ url_for('static', filename='img/Analisis IA.png') }}" alt="Análisis IA">
+                <p>2. Análisis IA</p>
+            </div>
+            <div class="paso">
+                <img src="{{ url_for('static', filename='img/Feedback.png') }}" alt="Feedback">
+                <p>3. Recibe feedback instantáneo</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
+    <!-- BENEFICIOS -->
+    <section class="beneficios">
+        <h2>Beneficios clave</h2>
+        <div class="iconos-beneficios">
+            <div>
+                <img src="{{ url_for('static', filename='img/Fortalezas.png') }}" alt="Fortalezas">
+                <p>Identifica tus fortalezas</p>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='img/Cohete.png') }}" alt="Mejora posibilidades">
+                <p>Mejora tus posibilidades</p>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='img/Reloj.png') }}" alt="Ahorra tiempo">
+                <p>Ahorra tiempo</p>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='img/Varita.png') }}" alt="Reduce esfuerzo">
+                <p>Reduce el esfuerzo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="frase">
+        <blockquote>“Donde tus <span>habilidades</span> encuentran su lugar”</blockquote>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>Redes sociales: <span>@cvanalytics</span></p>
+        <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo" class="logo-footer">
+        <div class="footer-links">
+            <a href="#">Nuestra misión</a>
+            <a href="#">Acerca de nosotros</a>
+            <a href="#">Política de privacidad</a>
+        </div>
+        <div class="footer-contacto">
+            <a href="#">Contáctate con nosotros</a>
+            <div class="redes">
+                <a href="#"><img src="{{ url_for('static', filename='img/Group 195.png') }}" alt="Email"></a>
+                <a href="#"><img src="{{ url_for('static', filename='img/Group 195.png') }}" alt="LinkedIn"></a>
+            </div>
+        </div>
     </footer>
 
 </body>
