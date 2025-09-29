@@ -1,136 +1,172 @@
+:root{
+--bg: #f9faf6;
+--card: #f3f5f8;
+--muted: #c8d0da;
+--accent: #0c4058; /* color del ring y del botón comparar */
+--ring-bg: #dde5ee;
+}
+
+/* RESET + tipografías */
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
-font-family: Arial, sans-serif;
-background-color: #f7fafa;
-color: #2c3e50;
-margin: 0;
-padding: 0;
+background: var(--bg);
+color: #22343a;
+font-family: "Segoe UI", Arial, sans-serif;
+line-height:1.4;
 }
 
+/* HEADER */
 .header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:28px 56px;
+}
+.logo { height:72px; }
+.home-button img { height:44px; }
+
+/* FORM */
+.formulario { display:flex; justify-content:center; padding:48px 20px 120px; }
+.formulario-contenedor { width:100%; max-width:1180px; display:flex; flex-direction:column; align-items:center; gap:28px; }
+
+/* ROW: two big boxes + circle center */
+.upload-row {
+display:flex;
+align-items:center;
+justify-content:center;
+gap:64px;
+width:100%;
+flex-wrap:wrap;
+margin-bottom:10px;
 }
 
-@media (max-width: 768px) {
-.header {
-    padding: 20px 20px;
-}
-}
+/* each upload big box */
+.upload-section.large { width:520px; max-width:90%; display:flex; flex-direction:column; align-items:center; gap:18px; }
+.upload-label { font-size:2rem; font-weight:500; color:#243746; text-align:center; margin-bottom:8px; }
 
-.logo {
-height: 50px;
-}
-
-.home-button img {
-height: 40px;
-}
-
-.formulario {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 40px 20px;
-}
-
-.formulario-contenedor {
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-max-width: 800px;
-}
-
-.upload-boxes {
-display: flex;
-justify-content: center;
-gap: 40px;
-margin-bottom: 30px;
-flex-wrap: wrap;
-width: 100%;
-}
-
-@media (max-width: 768px) {
-.upload-boxes {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-}
-
-.upload-section {
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 300px;
-}
-
-.upload-label {
-margin-bottom: 10px;
-font-weight: bold;
-text-align: center;
-}
-
+/* drop area big style */
 .drop-area {
-position: relative;
-width: 100%;
-height: 200px;
-border: 2px dashed #2c3e50;
-border-radius: 10px;
-background-color: #dbe3f1;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow: hidden;
-flex-direction: column;
-text-align: center;
+width:100%;
+height:300px;                /* grande como en la referencia */
+border-radius:14px;
+background: linear-gradient(180deg, #f7f8fb, #f2f4f7);
+box-shadow: 0 24px 60px rgba(12,64,88,0.06), inset 0 0 0 3px rgba(11,75,100,0.03);
+border: 2px solid rgba(11,75,100,0.12);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:18px;
+gap:12px;
+transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+position:relative;
+overflow:hidden;
 }
 
-.drop-area input[type="file"] {
-opacity: 0;
-width: 100%;
-height: 100%;
-position: absolute;
-cursor: pointer;
-}
+.drop-area:hover { transform: translateY(-6px); box-shadow: 0 30px 70px rgba(12,64,88,0.07); }
+.drop-area.dragover { background: #eef4fa; border-color: rgba(11,75,100,0.25); }
 
+/* hide actual file input but keep accessible */
+.drop-area input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; }
+
+/* icons above */
+.icon { display:block; fill:none; stroke:#0B4B64; stroke-width:1.5; }
+
+/* file-name bigger, centered */
 .file-name {
-z-index: 1;
-pointer-events: none;
-font-weight: bold;
-color: #2c3e50;
-padding: 10px;
+z-index:2;
+font-weight:700;
+color:#0f3b4b;
+font-size:1.35rem;
+pointer-events:none;
 }
 
-.contador {
-font-size: 18px;
-margin-bottom: 20px;
-color: #555;
-text-align: center;
+/* progress circle (donut) using conic-gradient via --progress-percent */
+.progress-circle {
+--size:128px;
+width: var(--size);
+height: var(--size);
+border-radius:50%;
+display:grid;
+place-items:center;
+/* background ring: color portion (accent) up to --progress-percent, rest ring-bg */
+background: conic-gradient(var(--accent) var(--progress-percent, 0%), var(--ring-bg) var(--progress-percent, 0%));
+transition: background 420ms ease;
+box-shadow: 0 12px 30px rgba(12,64,88,0.07);
 }
 
-.boton-contenedor {
-text-align: center;
-width: 100%;
+/* inner circle */
+.progress-inner {
+width: 86px;
+height: 86px;
+border-radius:50%;
+background: #f9faf6;
+display:grid;
+place-items:center;
+font-weight:700;
+color:#233742;
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
+#progress-text { font-size:1.05rem; }
+
+/* BOTON grande (centro abajo) */
+.boton-contenedor { margin-top:22px; }
 .boton-comparar {
-padding: 12px 30px;
-background-color: #0c4058;
-color: white;
+padding: 5px 20px;
+border-radius: 14px;
+font-size: 25px;
+font-weight:500;
 border: none;
-border-radius: 8px;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-.boton-comparar:hover {
-background-color: #0a3345;
-}
-
-.boton-comparar.disabled {
-background-color: #c0c7d2;
+background: var(--muted);
+color: white;
 cursor: not-allowed;
+transition: background 240ms ease, transform 120ms ease;
+letter-spacing: 1px;
+width: 300px;
+height: 100px;
+text-align: center;
+}
+.boton-comparar:hover { transform: translateY(-2px); }
+
+/* estado listo */
+.boton-comparar.ready {
+background: var(--accent);
+cursor: pointer;
+box-shadow: 0 10px 28px rgba(11,75,100,0.18);
+}
+.boton-comparar.disabled {
+background: #c9d1db;
+color: #ffffff;
+cursor: not-allowed;
+}
+
+/* RESPONSIVE: apilar y centrar */
+@media (max-width: 1920px) {
+.upload-row { gap:32px; }
+.drop-area { height:260px; }
+.upload-section.large { width:430px; }
+}
+@media (max-width: 700px) {
+.upload-row { flex-direction:column; align-items:center; }
+.progress-circle { order: 2; margin: 6px 0; }
+.upload-section.large { width:85%; }
+.boton-comparar { width: 300px; font-size:22px; padding:16px 36px; }
+}
+
+
+
+
+/* Por defecto se ve el logo claro */
+.logo-dark {
+    display: none;
+}
+
+/* Cuando está en modo oscuro, se invierten */
+.dark-mode .logo-light {
+    display: none;
+}
+.dark-mode .logo-dark {
+    display: inline-block;
 }

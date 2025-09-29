@@ -1,74 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Comparador de CV</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script defer src="{{ url_for('static', filename='js/modoOscuro.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/upload.js') }}"></script>
 </head>
 <body>
 <header class="header">
-    <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
-    <a href="/" class="home-button">
-    <img src="{{ url_for('static', filename='img/Home_Btn.png') }}" alt="Home">
+    <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics Logo" class="logo logo-light">
+    <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo Blanco" class="logo logo-dark">
+    <a href="/" class="home-button" aria-label="Ir al inicio">
+        <img src="{{ url_for('static', filename='img/Home_Btn.png') }}" alt="Home">
     </a>
 </header>
 
 <main class="formulario">
-    <form action="{{ url_for('comparar') }}" method="post" enctype="multipart/form-data" class="formulario-contenedor">
-    <div class="upload-boxes">
-    <div class="upload-section">
-        <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
-        <div class="drop-area">
-            <input type="file" id="requisitos" name="requisitos" accept="application/pdf" required onchange="actualizarEstado(this)">
-            <span class="file-name">Subir archivos</span>
-        </div>
+    <form action="{{ url_for('comparar') }}" method="post" enctype="multipart/form-data" class="formulario-contenedor" novalidate>
+
+        <div class="upload-row">
+            <!-- IZQUIERDA: CV -->
+            <div class="upload-section large">
+                <label for="cv" class="upload-label">Sube tu CV:</label>
+                <div class="drop-area" data-target="cv">
+                    <img src="{{ url_for('static', filename='img/CV SubirDoc.png') }}" alt="Documento" class="icon-img">
+                    <input type="file" id="cv" name="cv" accept="application/pdf" hidden>
+                    <span class="file-name" data-default="Seleccionar archivos PDF">
+                        Seleccionar archivos PDF<br><small>o arrastra y suelta aquí</small>
+                    </span>
+                </div>
+            </div>
+
+            <!-- CENTRO: círculo progreso -->
+            <div id="progress" class="progress-circle" role="img" aria-label="Progreso de archivos">
+                <div class="progress-inner">
+                    <span id="progress-text">0/2</span>
+                </div>
+            </div>
+
+            <!-- DERECHA: REQUISITOS -->
+            <div class="upload-section large">
+                <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
+                <div class="drop-area" data-target="requisitos">
+                    <img src="{{ url_for('static', filename='img/CV SubirCarpeta.png') }}" alt="Carpeta" class="icon-img">
+                    <input type="file" id="requisitos" name="requisitos" accept="application/pdf" hidden>
+                    <span class="file-name" data-default="Seleccionar archivos PDF">
+                        Seleccionar archivos PDF<br><small>o arrastra y suelta aquí</small>
+                    </span>
+                </div>
+            </div>
         </div>
 
-        <div class="upload-section">
-        <label for="cv" class="upload-label">Sube tu CV:</label>
-        <div class="drop-area">
-            <input type="file" id="cv" name="cv" accept="application/pdf" required onchange="actualizarEstado(this)">
-            <span class="file-name">Subir currículum</span>
+        <!-- BOTÓN -->
+        <div class="boton-contenedor">
+            <input type="submit" value="FALTAN ARCHIVOS" class="boton-comparar disabled" id="boton-comparar" disabled>
         </div>
-        </div>
-    </div>
-
-    <div class="contador" id="contador">0/2</div>
-
-    <div class="boton-contenedor">
-        <input type="submit" value="FALTAN ARCHIVOS" class="boton-comparar disabled" id="boton-comparar" disabled>
-    </div>
     </form>
 </main>
-
-<script>
-    function actualizarEstado(input) {
-    const span = input.nextElementSibling;
-    if (input.files.length > 0) {
-        span.textContent = input.files[0].name;
-    } else {
-        span.textContent = input.id === "cv" ? "Subir currículum" : "Subir archivos";
-    }
-
-    const requisitos = document.getElementById("requisitos").files.length > 0;
-    const cv = document.getElementById("cv").files.length > 0;
-    const contador = document.getElementById("contador");
-    const boton = document.getElementById("boton-comparar");
-
-    const total = (requisitos ? 1 : 0) + (cv ? 1 : 0);
-    contador.textContent = `${total}/2`;
-
-    if (total === 2) {
-        boton.disabled = false;
-        boton.value = "COMPARAR";
-        boton.classList.remove("disabled");
-    } else {
-        boton.disabled = true;
-        boton.value = "FALTAN ARCHIVOS";
-        boton.classList.add("disabled");
-    }
-    }
-</script>
 </body>
 </html>
