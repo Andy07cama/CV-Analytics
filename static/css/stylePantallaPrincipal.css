@@ -7,9 +7,8 @@
 }
 
 body {
-    background: #fff;
-    color: #222;
-    line-height: 1.6;
+background: #F9FAF6;
+background: linear-gradient(180deg,rgba(249, 250, 246, 1) 33%, rgba(241, 241, 241, 1) 43%, rgba(241, 241, 241, 1) 75%, rgba(249, 250, 246, 1) 85%);
 }
 
 /* ================= HEADER ================= */
@@ -219,7 +218,6 @@ body {
     text-align: center;
     font-size: 4.5rem;
     font-style: italic;
-    background: #fff;
 }
 
 .frase span {
@@ -312,7 +310,6 @@ transition: color 250ms ease, background-color 300ms ease, border-color 250ms ea
 }
 
 body{
-background: var(--bg);
 color: var(--text);
 line-height: 1.6;
 -webkit-font-smoothing:antialiased;
