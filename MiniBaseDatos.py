@@ -14,9 +14,13 @@ app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'pdf'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-
-API_KEY = os.getenv("GEMINI_API_KEY")  # Busca la clave en el entorno
+API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 print("API Key detectada:", API_KEY)  # debug
+
+if API_KEY:
+    genai.configure(api_key=API_KEY)
+else:
+    print("⚠️ No se encontró ninguna API Key para Gemini.")
 
 try:
     if not API_KEY:
