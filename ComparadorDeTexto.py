@@ -21,7 +21,7 @@ def comparar_textos(texto_cv, texto_req):
     """
 
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.5-flash")
         response = model.generate_content(prompt)
 
         texto_respuesta = response.text.strip()

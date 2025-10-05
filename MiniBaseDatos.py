@@ -58,7 +58,7 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     ---
 
     FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
-    - Usa un salto de línea triple (cinco veces enter) para separar cada sugerencia y se vea más claro y prolijo.
+    - Usa un salto de línea cuadruple (seis veces enter) para separar cada sugerencia y se vea más claro y prolijo.
     - No uses guiones, asteriscos, o cualquier otro carácter de lista.
     - La salida debe ser texto plano con una lista numerada del 1 al 5.
 
@@ -93,7 +93,7 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
     """
 
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
