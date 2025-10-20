@@ -11,6 +11,13 @@ background: #F9FAF6;
 background: linear-gradient(180deg,rgba(249, 250, 246, 1) 33%, rgba(241, 241, 241, 1) 43%, rgba(241, 241, 241, 1) 75%, rgba(249, 250, 246, 1) 85%);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+#filtrado {
+    scroll-margin-top: 200px; /* ajustá según el alto de tu header */
+}
+
 /* ================= HEADER ================= */
 .header {
     background: #ffffff;
@@ -400,19 +407,21 @@ margin-bottom: 1.5rem;
 }
 
 .btn-principal {
-display: inline-block;
-padding: 1rem 2rem;
-background: var(--accent);
-color: #fff;
-font-size: 1.6rem;
-font-weight: 600;
-border-radius: 12px;
-text-decoration: none;
-border: 2px solid transparent;
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 50px; /* más redondo */
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .btn-principal:hover {
-background: var(--accent-dark);
+    background: var(--accent-dark);
+    transform: scale(1.03);
 }
 
 /* hero image variants */

@@ -4,3 +4,4 @@ pdfplumber
 werkzeug
 gunicorn
 python-dotenv
+pytesseract
