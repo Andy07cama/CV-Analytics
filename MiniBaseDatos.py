@@ -11,7 +11,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
-ALLOWED_EXTENSIONS = {'pdf'}
+ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'jpeg', 'png'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -137,8 +137,8 @@ def comparar():
     except Exception as e:
         return jsonify({'error': f'No se pudieron guardar los archivos: {str(e)}'}), 500
 
-    texto_cv = LectorDeTextos.extraer_texto_pdf(cv_path)
-    texto_req = LectorDeTextos.extraer_texto_pdf(req_path)
+    texto_cv = LectorDeTextos.extraer_texto_archivo(cv_path)
+    texto_req = LectorDeTextos.extraer_texto_archivo(req_path)
     
     if not texto_cv.strip() or not texto_req.strip():
         return render_template("resultado.html", similitud="0%", feedback="❗ No se pudo leer el contenido de uno o ambos archivos PDF. Verificá que no estén vacíos y que tengan texto real.")

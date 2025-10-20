@@ -2,6 +2,9 @@ import pdfplumber
 import re
 import unicodedata
 from datetime import datetime
+import pytesseract
+from PIL import Image
+import os
 
 
 def extraer_texto_pdf(ruta_pdf):
@@ -10,6 +13,29 @@ def extraer_texto_pdf(ruta_pdf):
         for pagina in pdf.pages:
             texto += pagina.extract_text() + "\n"
     return texto
+
+def extraer_texto_imagen(ruta_imagen):
+    """Extrae texto desde una imagen (JPG, PNG, etc.) usando OCR."""
+    try:
+        img = Image.open(ruta_imagen)
+        texto = pytesseract.image_to_string(img, lang="spa")  # OCR en español
+        return texto
+    except Exception as e:
+        print(f"Error al leer imagen: {e}")
+        return ""
+
+
+def extraer_texto_archivo(ruta_archivo):
+    """Detecta el tipo de archivo (PDF o imagen) y aplica el método correcto."""
+    extension = os.path.splitext(ruta_archivo)[1].lower()
+    if extension == ".pdf":
+        return extraer_texto_pdf(ruta_archivo)
+    elif extension in [".png", ".jpg", ".jpeg"]:
+        return extraer_texto_imagen(ruta_archivo)
+    else:
+        print(f"⚠️ Tipo de archivo no soportado: {extension}")
+        return ""
+
 
 def normalizar_texto(texto: str) -> str:
     """
