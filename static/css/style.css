@@ -111,36 +111,6 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 
 #progress-text { font-size:1.05rem; }
 
-/* BOTON grande (centro abajo) */
-.boton-contenedor { margin-top:22px; }
-.boton-comparar {
-padding: 5px 20px;
-border-radius: 14px;
-font-size: 25px;
-font-weight:500;
-border: none;
-background: var(--muted);
-color: white;
-cursor: not-allowed;
-transition: background 240ms ease, transform 120ms ease;
-letter-spacing: 1px;
-width: 300px;
-height: 100px;
-text-align: center;
-}
-.boton-comparar:hover { transform: translateY(-2px); }
-
-/* estado listo */
-.boton-comparar.ready {
-background: var(--accent);
-cursor: pointer;
-box-shadow: 0 10px 28px rgba(11,75,100,0.18);
-}
-.boton-comparar.disabled {
-background: #c9d1db;
-color: #ffffff;
-cursor: not-allowed;
-}
 
 /* RESPONSIVE: apilar y centrar */
 @media (max-width: 1920px) {
@@ -158,15 +128,125 @@ cursor: not-allowed;
 
 
 
-/* Por defecto se ve el logo claro */
-.logo-dark {
-    display: none;
+/* ============================= */
+/* ======== MODO OSCURO ======== */
+/* ============================= */
+
+.dark-mode {
+--bg: #2C3E5A;       /* nuevo tono más luminoso */
+--card: #1f3147;
+--muted: #7b8b97;
+--accent: #00a8e8;
+--ring-bg: #40586d;
+color: #e9edf1;
+background-color: var(--bg);
 }
 
-/* Cuando está en modo oscuro, se invierten */
+/* Fondo general */
+.dark-mode body {
+background-color: var(--bg);
+color: #f5f6f7;
+}
+
+/* Header */
+.dark-mode .header {
+background-color: transparent;
+}
+.dark-mode .home-button img {
+filter: brightness(0) invert(1);
+}
+
+/* LOGOS: solo se muestra uno */
+.logo-dark {
+display: none;
+}
 .dark-mode .logo-light {
-    display: none;
+display: none;
 }
 .dark-mode .logo-dark {
-    display: inline-block;
+display: inline-block;
 }
+
+/* Etiquetas */
+.dark-mode .upload-label {
+color: #e9f0f7;
+}
+
+/* Área de carga */
+.dark-mode .drop-area {
+background: linear-gradient(180deg, #1f3147, #1b2b3f);
+border: 2px solid rgba(255, 255, 255, 0.15);
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+inset 0 0 0 3px rgba(255, 255, 255, 0.08);
+transition: all 0.2s ease-in-out;
+}
+.dark-mode .drop-area:hover {
+background: linear-gradient(180deg, #253d58, #20334a);
+box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+.dark-mode .drop-area.dragover {
+background: #284966;
+border-color: rgba(255, 255, 255, 0.4);
+box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+/* Cuando se sube archivo */
+.dark-mode .drop-area.file-loaded {
+border-color: white;
+box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* Texto dentro del área */
+.dark-mode .file-name {
+color: #d1e3f0;
+}
+
+/* Íconos */
+.dark-mode .icon-img {
+filter: brightness(0) invert(1);
+}
+
+/* Círculo de progreso */
+.dark-mode .progress-circle {
+background: conic-gradient(var(--accent) var(--progress-percent, 0%), var(--ring-bg) var(--progress-percent, 0%));
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+.dark-mode .progress-inner {
+background: #1f3147;
+color: #ffffff;
+}
+
+/* Botón comparar */
+.boton-contenedor {
+margin-top: 100px; /* lo bajamos */
+}
+.boton-comparar {
+padding: 10px 25px;
+border-radius: 50px; /* más redondo */
+font-size: 25px;
+font-weight: 500;
+border: none;
+background: var(--muted);
+color: white;
+cursor: not-allowed;
+transition: all 240ms ease;
+width: 300px;
+height: 100px;
+text-align: center;
+}
+.boton-comparar.ready {
+background: var(--accent);
+cursor: pointer;
+box-shadow: 0 12px 28px rgba(0, 160, 255, 0.35);
+}
+.boton-comparar.disabled {
+background: #b0b8c0;
+color: #ffffff;
+cursor: not-allowed;
+}
+
+/* Sombras generales */
+.dark-mode .upload-section.large {
+filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+}
+

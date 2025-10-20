@@ -16,6 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    function actualizarBordes() {
+        document.querySelectorAll(".drop-area").forEach(area => {
+            const input = document.getElementById(area.dataset.target);
+            if (input.files.length > 0) {
+                area.classList.add("file-loaded");
+            } else {
+                area.classList.remove("file-loaded");
+            }
+        });
+    }
 
     function actualizarEstado() {
         const total = (cvInput.files.length > 0 ? 1 : 0) + (reqInput.files.length > 0 ? 1 : 0);
@@ -35,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             boton.classList.add("disabled");
             boton.classList.remove("ready");
         }
+        actualizarBordes();
     }
 
     document.querySelectorAll(".drop-area").forEach(area => {
