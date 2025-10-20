@@ -174,27 +174,34 @@ color: #e9f0f7;
 
 /* Área de carga */
 .dark-mode .drop-area {
-background: linear-gradient(180deg, #1f3147, #1b2b3f);
-border: 2px solid rgba(255, 255, 255, 0.15);
-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-inset 0 0 0 3px rgba(255, 255, 255, 0.08);
-transition: all 0.2s ease-in-out;
-}
-.dark-mode .drop-area:hover {
-background: linear-gradient(180deg, #253d58, #20334a);
-box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
-}
-.dark-mode .drop-area.dragover {
-background: #284966;
-border-color: rgba(255, 255, 255, 0.4);
-box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+    background: linear-gradient(180deg, #1f3147, #1b2b3f);
+    border: 2px solid rgba(255, 255, 255, 0.15); /* borde sutil normal */
+    box-shadow: 0 0 40px 15px rgba(0, 150, 255, 0.35); /* sombra azul envolvente */
+    border-radius: 14px;
+    transition: all 0.25s ease-in-out;
 }
 
-/* Cuando se sube archivo */
-.dark-mode .drop-area.file-loaded {
-border-color: white;
-box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+.dark-mode .drop-area:hover {
+    background: linear-gradient(180deg, #253d58, #20334a);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 60px 22px rgba(0, 180, 255, 0.45);
+    transform: scale(1.02);
 }
+
+/* Estado dragover */
+.dark-mode .drop-area.dragover {
+    border: 2px solid #00c8ff;
+    box-shadow: 0 0 75px 26px rgba(0, 200, 255, 0.55);
+    transform: scale(1.04);
+}
+
+/* Estado con archivo cargado → borde blanco y sombra mantenida */
+.dark-mode .drop-area.filled {
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: linear-gradient(180deg, #20354d, #1d2f46);
+    box-shadow: 0 0 40px 15px rgba(0, 150, 255, 0.35);
+}
+
 
 /* Texto dentro del área */
 .dark-mode .file-name {

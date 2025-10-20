@@ -16,16 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    function actualizarBordes() {
-        document.querySelectorAll(".drop-area").forEach(area => {
-            const input = document.getElementById(area.dataset.target);
-            if (input.files.length > 0) {
-                area.classList.add("file-loaded");
-            } else {
-                area.classList.remove("file-loaded");
-            }
-        });
-    }
 
     function actualizarEstado() {
         const total = (cvInput.files.length > 0 ? 1 : 0) + (reqInput.files.length > 0 ? 1 : 0);
@@ -34,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const percent = (total / 2) * 100;
         progress.style.setProperty("--progress-percent", percent + "%");
 
+        // Cambiar apariencia del botón
         if (total === 2) {
             boton.disabled = false;
             boton.value = "COMPARAR";
@@ -45,9 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
             boton.classList.add("disabled");
             boton.classList.remove("ready");
         }
-        actualizarBordes();
+
+        // Aplicar borde blanco a drop-areas con archivo cargado
+        document.querySelectorAll(".drop-area").forEach(area => {
+            const input = document.getElementById(area.dataset.target);
+            if (input.files.length > 0) {
+                area.classList.add("filled");
+            } else {
+                area.classList.remove("filled");
+            }
+        });
     }
 
+    // Inicializar eventos
     document.querySelectorAll(".drop-area").forEach(area => {
         const input = document.getElementById(area.dataset.target);
 
@@ -57,7 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             area.classList.add("dragover");
         });
+
         area.addEventListener("dragleave", () => area.classList.remove("dragover"));
+
         area.addEventListener("drop", e => {
             e.preventDefault();
             area.classList.remove("dragover");
@@ -76,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Inicializar nombres y estado
     actualizarNombres();
     actualizarEstado();
 });
