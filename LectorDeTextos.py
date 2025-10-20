@@ -3,8 +3,21 @@ import re
 import unicodedata
 from datetime import datetime
 import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 from PIL import Image
 import os
+
+#pip install pdfplumber
+
+#pip install pytesseract
+#pytesseract necesita Tesseract OCR instalado en tu sistema:Windows:
+#Descargá el instalador desde Tesseract OCR
+#y anotá la ruta de instalación (ej: C:\Program Files\Tesseract-OCR\tesseract.exe).
+#En tu lectordetextos.py si estás en Windows, descomentá y ajustá:
+#pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+#pip install pillow
+#pip install re
 
 
 def extraer_texto_pdf(ruta_pdf):
