@@ -31,13 +31,13 @@ padding:28px 56px;
 
 /* ROW: two big boxes + circle center */
 .upload-row {
-display:flex;
-align-items:center;
-justify-content:center;
-gap:64px;
-width:100%;
-flex-wrap:wrap;
-margin-bottom:10px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 64px;
+width: 100%;
+flex-wrap: wrap;
+margin-bottom: 10px;
 }
 
 /* each upload big box */
@@ -112,17 +112,42 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 #progress-text { font-size:1.05rem; }
 
 
-/* RESPONSIVE: apilar y centrar */
+/* Ajustes generales para pantallas más grandes */
 @media (max-width: 1920px) {
-.upload-row { gap:32px; }
-.drop-area { height:260px; }
-.upload-section.large { width:430px; }
+    .upload-row { gap: 32px; }
+    .drop-area { height: 260px; }
+    .upload-section.large { width: 430px; }
 }
-@media (max-width: 700px) {
-.upload-row { flex-direction:column; align-items:center; }
-.progress-circle { order: 2; margin: 6px 0; }
-.upload-section.large { width:85%; }
-.boton-comparar { width: 300px; font-size:22px; padding:16px 36px; }
+
+/* Cuando ya no entran los tres elementos en línea */
+@media (max-width: 1100px) {
+    .upload-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upload-section.large:first-of-type {
+        order: 1;
+    }
+
+    .progress-circle {
+        order: 2;
+        margin: 16px 0;
+    }
+
+    .upload-section.large:last-of-type {
+        order: 3;
+    }
+
+    .upload-section.large {
+        width: 85%;
+    }
+
+    .boton-comparar {
+        width: 300px;
+        font-size: 22px;
+        padding: 16px 36px;
+    }
 }
 
 
