@@ -223,34 +223,97 @@ background: #1f3147;
 color: #ffffff;
 }
 
-/* Botón comparar */
+/* ===== CONTENEDOR ===== */
 .boton-contenedor {
-margin-top: 100px; /* lo bajamos */
-}
-.boton-comparar {
-padding: 10px 25px;
-border-radius: 50px; /* más redondo */
-font-size: 25px;
-font-weight: 500;
-border: none;
-background: var(--muted);
-color: white;
-cursor: not-allowed;
-transition: all 240ms ease;
-width: 300px;
-height: 100px;
+margin-top: 100px;
 text-align: center;
 }
-.boton-comparar.ready {
-background: var(--accent);
-cursor: pointer;
-box-shadow: 0 12px 28px rgba(0, 160, 255, 0.35);
-}
-.boton-comparar.disabled {
-background: #b0b8c0;
-color: #ffffff;
+
+/* ===== BOTÓN BASE ===== */
+#boton-comparar {
+width: 320px;                /* tamaño fijo */
+height: 90px;                /* tamaño fijo */
+display: inline-flex;
+align-items: center;
+justify-content: center;
+border-radius: 50px;
+font-weight: 600;
+letter-spacing: 1px;
+text-transform: uppercase;
+border: 2px solid transparent;
+transition: all 0.3s ease;
 cursor: not-allowed;
 }
+
+/* ===== DESHABILITADO ===== */
+#boton-comparar.disabled {
+background-color: #7f8c8d;
+border: 2px solid #fff;
+color: #fff;
+font-size: 1.6rem;
+font-weight: 500;
+box-shadow: 0 0 8px rgba(255,255,255,0.1);
+}
+
+/* ===== ACTIVO ===== */
+#boton-comparar.ready {
+background-color: #009fe3;
+border: 2px solid #fff;
+color: #fff;
+cursor: pointer;
+font-size: 2rem;
+box-shadow: 0 0 20px rgba(0,159,227,0.6);
+}
+
+#boton-comparar.ready:hover {
+transform: scale(1.05);
+box-shadow: 0 0 35px rgba(0,159,227,0.8);
+}
+
+/* ===== MODO OSCURO ===== */
+.dark-mode #boton-comparar.disabled {
+background-color: #5e6a75;
+border: 2px solid #fff;
+font-size: 1.6rem;
+font-weight:500;
+box-shadow: 0 0 8px rgba(0,159,227,0.2);
+}
+
+.dark-mode #boton-comparar.ready {
+background-color: #0B4B64;
+border: 2px solid #fff;
+font-size: 2rem;
+box-shadow: 0 0 25px rgba(0,159,227,0.5);
+}
+
+.dark-mode #boton-comparar.ready:hover {
+transform: scale(1.05);
+box-shadow: 0 0 40px rgba(0,159,227,0.8);
+}
+
+/* ===== MODO CLARO ===== */
+body:not(.dark-mode) #boton-comparar.disabled {
+background-color: #d0d5db;
+border: 2px solid #fff;
+color: #fff;
+font-size: 1.6rem;
+font-weight: 500;
+box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+body:not(.dark-mode) #boton-comparar.ready {
+background-color: #004b63;
+border: 2px solid #fff;
+color: #fff;
+font-size: 2rem;
+box-shadow: 0 0 20px rgba(0,75,99,0.4);
+}
+
+body:not(.dark-mode) #boton-comparar.ready:hover {
+background-color: #0B4B64;
+box-shadow: 0 0 30px rgba(0,75,99,0.6);
+}
+
 
 /* Sombras generales */
 .dark-mode .upload-section.large {
