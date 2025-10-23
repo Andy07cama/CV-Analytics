@@ -44,53 +44,78 @@ def generar_sugerencias_con_gemini(texto_cv, texto_req):
         return "⚠️ Error de Configuración\nNo se pueden generar sugerencias porque la clave de API de Gemini no ha sido configurada correctamente en el archivo `MiniBaseDatos.py`."
 
     prompt = f"""
-    Rol: Eres un asistente experto en Recursos Humanos y un coach de carrera profesional. Tu tono debe ser profesional, alentador y constructivo.
+Rol: Eres un asistente experto en Recursos Humanos y coach de carrera profesional.
+Tu tono debe ser profesional, alentador y constructivo.
 
-    Tarea Principal: Analizar un CV en comparación con los requisitos de un puesto y generar un informe claro y accionable.
+Objetivo principal:
+Analizar el CV del candidato en comparación con los requisitos del puesto
+y generar un informe con sugerencias específicas y accionables de mejora.
 
-    Documentos para Análisis:
-    ---
-    CV DEL CANDIDATO:
-    {texto_cv}
-    ---
-    REQUISITOS DEL PUESTO:
-    {texto_req}
-    ---
+---
 
-    FORMATO DE SALIDA OBLIGATORIO (MUY IMPORTANTE):
-    - Usa un salto de línea cuadruple (seis veces enter) para separar cada sugerencia y se vea más claro y prolijo.
-    - No uses guiones, asteriscos, o cualquier otro carácter de lista.
-    - La salida debe ser texto plano con una lista numerada del 1 al 5.
+Documentos para analizar:
+CV DEL CANDIDATO:
+{texto_cv}
 
-    ESTRUCTURA EXACTA DE LA RESPUESTA:
+---
 
-    1. [Aquí va la primera sugerencia en un párrafo, explicando el qué se debe mejorar. Basa esta sugerencia en una discrepancia entre el CV y los requisitos.]
+REQUISITOS DEL PUESTO:
+{texto_req}
 
-    [Salto de línea doble]
+---
 
-    2. [Aquí va la segunda sugerencia en su propio párrafo, siguiendo la misma lógica.]
+Formato de salida OBLIGATORIO:
+- El resultado debe ser texto plano, sin Markdown, sin guiones ni viñetas.
+- Escribe una lista NUMERADA del 1 al 5.
+- Cada sugerencia debe estar separada por CUATRO saltos de línea (cuatro veces Enter).
+- Cada sugerencia debe tener una o dos oraciones cortas como máximo.
+- La salida debe verse prolija y con espacio visible entre puntos.
 
-    [Salto de línea doble]
+---
 
-    3. [Aquí va la tercera sugerencia en su propio párrafo.]
+Instrucciones de contenido:
+- NO inventes información. Basa todo tu análisis estrictamente en los textos proporcionados.
+- Cada sugerencia debe reflejar una diferencia o área de mejora real entre el CV y los requisitos.
+- Sé específico: evita consejos genéricos o vagos.
+- Sé constructivo y alentador: explica cómo el candidato puede adaptar o mejorar su CV.
+- Utiliza palabras clave relevantes del puesto para optimizar el CV frente a sistemas ATS (Applicant Tracking Systems).
+- Proporciona exactamente 5 sugerencias, ni más ni menos.
 
-    [Salto de línea doble]
+---
 
-    4. [Aquí va la cuarta sugerencia en su propio párrafo.]
+Ejemplo de formato esperado (respetando los espacios):
 
-    [Salto de línea doble]
+1. [Primera sugerencia en un párrafo corto explicando qué mejorar.]
 
-    5. [Aquí va la quinta y última sugerencia en su propio párrafo.]
 
-    Instrucciones Adicionales sobre el Contenido:
-    Sé Específico: No des consejos genéricos. Basa cada sugerencia en una cualidad o área de mejora que observes entre el CV y los requisitos.
-    Sé Constructivo: Enfócate en cómo el candidato puede adaptar y resaltar mejor su experiencia actual.
-    Límite: Proporciona exactamente 5 sugerencias no muy largas, que como mucho sean 3 oraciones.
-    No Inventes: Basa todo tu análisis estrictamente en los textos proporcionados.
+(4 saltos de línea aquí)
 
-    Ahora, genera el informe siguiendo todas estas instrucciones al pie de la letra, asegurando que cada punto esté separado por un espacio notable.
-    Hace los saltos de parrafo amplialos si necesitas pero q haya espacio entre uno y otro para que se vea más prolijo daleleeee negritooooo
-    """
+
+2. [Segunda sugerencia.]
+
+
+(4 saltos de línea aquí)
+
+
+3. [Tercera sugerencia.]
+
+
+(4 saltos de línea aquí)
+
+
+4. [Cuarta sugerencia.]
+
+
+(4 saltos de línea aquí)
+
+
+5. [Quinta sugerencia.]
+
+---
+
+Ahora, genera las 5 sugerencias siguiendo TODAS las instrucciones al pie de la letra.
+"""
+
 
     try:
         model = genai.GenerativeModel('gemini-2.5-flash')
