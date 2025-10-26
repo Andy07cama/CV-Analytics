@@ -6,4 +6,3 @@ gunicorn
 python-dotenv
 pytesseract
 pillow
-re
