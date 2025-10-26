@@ -83,3 +83,34 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarNombres();
     actualizarEstado();
 });
+
+
+
+
+// Al presionar "Comparar" → animar círculo
+const form = document.querySelector('.formulario-contenedor');
+const progressCircle = document.querySelector('.progress-circle');
+const progressText = document.getElementById('progress-text');
+const botonComparar = document.getElementById('boton-comparar');
+
+if (form && progressCircle && botonComparar) {
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Evita envío inmediato
+    if (botonComparar.disabled) return;
+
+    // Quita texto y muestra animación
+    progressText.style.display = 'none';
+    progressCircle.classList.add('loading');
+
+    // Simula carga
+    setTimeout(() => {
+    progressCircle.classList.remove('loading');
+    progressCircle.classList.add('check');
+    }, 1800); // animación de carga (~1.8s)
+
+    // Luego de mostrar el check, redirige
+    setTimeout(() => {
+    form.submit();
+    }, 2800); // espera el check antes de pasar
+});
+}
