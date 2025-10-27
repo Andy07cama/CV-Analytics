@@ -67,8 +67,8 @@ REQUISITOS DEL PUESTO:
 Formato de salida OBLIGATORIO:
 - El resultado debe ser texto plano, sin Markdown, sin guiones ni viñetas.
 - Escribe una lista NUMERADA del 1 al 5.
-- Cada sugerencia debe estar separada por CUATRO saltos de línea (cuatro veces Enter).
-- Cada sugerencia debe tener una o dos oraciones cortas como máximo.
+- Cada sugerencia debe estar separada por cinco saltos de línea (seis veces Enter) (ESTO ES OBLIGATORIO PARA QUE SE VEA MÁS PROLIJO Y ESPACIADO PARA MEJOR VISIBILIDAD).
+- Cada sugerencia debe tener una o dos oraciones como máximo.
 - La salida debe verse prolija y con espacio visible entre puntos.
 
 ---
@@ -113,7 +113,7 @@ Ejemplo de formato esperado (respetando los espacios):
 
 ---
 
-Ahora, genera las 5 sugerencias siguiendo TODAS las instrucciones al pie de la letra.
+Ahora, genera las 5 sugerencias siguiendo TODAS las instrucciones al pie de la letra PORFIS.
 """
 
 
@@ -176,7 +176,10 @@ def comparar():
     # Se generan sugerencias si la compatibilidad no es casi perfecta
     if resultado[0] < 95: 
         sugerencias = generar_sugerencias_con_gemini(texto_cv, texto_req)
-
+    else:    
+        feedback = ( "¡Excelente! Tu CV está muy alineado con los requisitos del puesto. "
+        "No es necesario realizar cambios importantes."
+        )
     try:
         os.remove(cv_path)
         os.remove(req_path)
