@@ -31,8 +31,6 @@ except Exception as e:
     print(f"Error fatal al configurar la API de Gemini: {e}")
     API_KEY = None
 
-
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
