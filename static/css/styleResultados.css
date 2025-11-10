@@ -1,146 +1,113 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9faf7;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #F9FAF8;
     margin: 0;
     padding: 0;
-    color: #1d2c3b;
 }
 
 header {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    padding: 20px 40px;
+    padding: 30px 60px;
 }
 
 .logo {
-    height: 48px;
+    height: 70px;
 }
 
+/* --- Estructura principal --- */
 main {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.container-resultados {
-    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 80px 80px; /* padding bottom agregado */
+    margin-top: 50px;
     gap: 60px;
-    max-width: 1200px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
-/* Caja izquierda (CV y texto comparado) */
-.cv-box {
-    flex: 1;
-    background-color: white;
-    border-radius: 12px;
-    border: 2px solid #0B4D66;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    min-height: 400px;
+/* --- Panel de sugerencias --- */
+.sugerencias-box {
+    background-color: #C3CAD9;
+    border: 2px solid #AEB5C3;
+    border-radius: 16px;
+    padding: 40px 50px;
+    width: 55%;
+    min-height: 500px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-.cv-header {
-    background-color: #0B4D66;
-    height: 50px;
-}
-
-.cv-content {
-    padding: 20px;
-    flex: 1;
-}
-
-/* Caja derecha (feedback, similitud, botón) */
-.info-box {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.similitud-box {
-    background-color: #c4c4c4;
-    color: white;
-    font-size: 1.8em;
+.sugerencias-box h2 {
+    font-size: 2rem;
     font-weight: bold;
-    text-align: center;
-    padding: 20px;
-    border-radius: 12px;
+    color: #003E54;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-h2 {
-    margin: 0;
-    font-size: 1.4em;
-    color: #1d2c3b;
+.sugerencias-box h2::before {
+    content: "💡";
+    font-size: 2rem;
 }
 
-.feedback-box {
-    border: 2px solid #000;
-    padding: 20px;
-    border-radius: 8px;
-    min-height: 150px;
+.sugerencias-content {
+    color: #1a1a1a;
+    line-height: 1.8;
+    font-size: 1.25rem;
     white-space: pre-wrap;
-    font-size: 1.1em;
-    color: #1d2c3b;
 }
 
-/* Botón de volver */
-.btn-volver {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: #0B4D66;
-    color: white;
-    font-size: 1.2em;
+/* --- Sección derecha --- */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+/* --- Círculo de progreso --- */
+.progress-circle {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: conic-gradient(#0B4B64 var(--progress, 0%), #C3CAD9 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.progress-inner {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background-color: #F9FAF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
     font-weight: bold;
+    color: #0B4B64;
+}
+
+/* --- Botón volver --- */
+.btn-volver {
+    background-color: #0B4B64;
+    color: white;
+    border: none;
+    padding: 28px 80px; /* más grande */
+    border-radius: 60px;
+    font-size: 1.8rem;
+    font-weight: 700;
     text-decoration: none;
-    text-align: center;
-    padding: 15px 20px;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
 .btn-volver:hover {
-    background-color: #08394d;
-}
-
-@media screen and (max-width: 900px) {
-    .container-resultados {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cv-box {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    .info-box {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    .similitud-box,
-    .feedback-box,
-    .btn-volver {
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-
-.sugerencias {
-    padding: 10px;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-.sugerencias h1, .sugerencias h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-.sugerencias ul {
-    padding-left: 20px;
+    background-color: #09384b;
+    transform: scale(1.05);
 }

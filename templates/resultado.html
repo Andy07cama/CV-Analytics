@@ -13,38 +13,25 @@
     </header>
 
     <main>
-        <section class="container-resultados">
-
-            <!-- Caja izquierda (contenido a futuro) -->
-            <div class="cv-box">
-                <div class="cv-header"></div>
-                <div class="cv-content">
-                    {% if sugerencias %}
-                        <h2>Sugerencias de mejora</h2>
-                        <div class="sugerencias">
-                            {{ sugerencias | safe }}
-                        </div>
-                    {% else %}
-                        <p><em>No se pudieron generar sugerencias automáticamente.</em></p>
-                    {% endif %}
-                </div>
+        <!-- Panel de sugerencias -->
+        <div class="sugerencias-box">
+            <h2>Sugerencias</h2>
+            <div class="sugerencias-content">
+                {% if sugerencias %}
+                    {{ sugerencias | safe }}
+                {% else %}
+                    <p><em>No se pudieron generar sugerencias automáticamente.</em></p>
+                {% endif %}
             </div>
+        </div>
 
-            <!-- Caja derecha -->
-            <div class="info-box">
-                <div class="similitud-box">
-                    {{ similitud }}
-                </div>
-
-                <h2>Feedback:</h2>
-                <div class="feedback-box">
-                    {{ feedback }}
-                </div>
-
-                <a href="{{ url_for('subir') }}" class="btn-volver">Volver al menú principal</a>
+        <!-- Progreso y botón -->
+        <div class="right-section">
+            <div class="progress-circle" style="--progress: {{ porcentaje }}%">
+                <div class="progress-inner">{{ porcentaje }}%</div>
             </div>
-
-        </section>
+            <a href="{{ url_for('subir') }}" class="btn-volver">MENÚ PRINCIPAL</a>
+        </div>
     </main>
 
 </body>
