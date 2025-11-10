@@ -111,3 +111,40 @@ main {
     background-color: #09384b;
     transform: scale(1.05);
 }
+
+/* --- Círculo de progreso SVG --- */
+.progress-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__background {
+    fill: #F9FAF8; /* fondo central */
+    stroke: #C3CAD9; /* color gris del fondo */
+    stroke-width: 28; /* más ancho */
+}
+
+.progress-ring__circle {
+    fill: transparent;
+    stroke: #0B4B64; /* color del progreso */
+    stroke-width: 28; /* igual que el fondo */
+    stroke-dasharray: 691; /* 2 * π * r */
+    stroke-dashoffset: 691;
+    transition: stroke-dashoffset 1s ease;
+    /* quitamos el borde redondeado */
+}
+
+.progress-label {
+    position: absolute;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #000;
+}
