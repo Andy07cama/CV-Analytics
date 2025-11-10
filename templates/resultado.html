@@ -9,7 +9,8 @@
 <body>
 
     <header>
-        <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo">
+    <img src="{{ url_for('static', filename='img/CVAnalyticsLogo.png') }}" alt="CV Analytics" class="logo logo-light">
+    <img src="{{ url_for('static', filename='img/CVAnalyticsLogoBlanco.png') }}" alt="CV Analytics Logo Blanco" class="logo logo-dark">
     </header>
 
     <main>
@@ -40,5 +41,6 @@
     </main>
 
     <script src="{{ url_for('static', filename='js/progreso.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/modoOscuro.js') }}"></script>
 </body>
 </html>

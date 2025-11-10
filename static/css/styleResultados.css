@@ -148,3 +148,62 @@ main {
     font-weight: bold;
     color: #000;
 }
+
+
+
+
+
+/* --- MODO OSCURO --- */
+body.dark-mode {
+    background-color: #2C3E50;
+}
+.logo-dark {
+    display: none;
+}
+
+body.dark-mode .logo-light {
+    display: none;
+}
+
+body.dark-mode .logo-dark {
+    display: block;
+}
+
+body.dark-mode .sugerencias-box {
+    background-color: #06475B;
+    border: 2px solid #0B4B64;
+    box-shadow: 0 0 30px 10px rgba(0, 180, 255, 0.45);
+}
+
+body.dark-mode .sugerencias-box h2 {
+    color: #E8F1F8;
+}
+
+body.dark-mode .sugerencias-content {
+    color: #DDE6EC;
+}
+
+body.dark-mode .progress-ring__background {
+    stroke: #1A2A3A; /* fondo del anillo */
+}
+
+body.dark-mode .progress-ring__circle {
+    stroke: #0B4B64; /* color del progreso */
+}
+
+body.dark-mode .progress-label {
+    color: #FFFFFF; /* porcentaje dentro del anillo */
+}
+
+body.dark-mode .btn-volver {
+    background-color: #06475B;
+    color: #FFFFFF;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(11, 75, 100, 0.6);
+}
+
+body.dark-mode .btn-volver:hover {
+    background-color: #0B4B64;
+    transform: scale(1.05);
+}
+

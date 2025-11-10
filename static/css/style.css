@@ -169,7 +169,7 @@ outline-offset: -8px; /* ajusta para que parezca separación suave sin crear una
 /* ============================= */
 
 .dark-mode {
---bg: #2C3E5A;       /* nuevo tono más luminoso */
+--bg: #2C3E50;       /* nuevo tono más luminoso */
 --card: #1f3147;
 --muted: #7b8b97;
 --accent: #00a8e8;
