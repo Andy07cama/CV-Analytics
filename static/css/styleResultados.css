@@ -183,17 +183,50 @@ body.dark-mode .sugerencias-content {
     color: #DDE6EC;
 }
 
+/* --- MODO OSCURO: anillo limpio, progreso blanco y glow --- */
+body.dark-mode .progress-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px 10px rgba(0, 180, 255, 0.25);
+    border-radius: 50%;
+}
+
+/* Fondo del anillo */
 body.dark-mode .progress-ring__background {
-    stroke: #1A2A3A; /* fondo del anillo */
+    fill: none;                /* sin relleno blanco */
+    stroke: #2C3E50;           /* mismo color del fondo */
+    stroke-width: 28;
+    stroke-linecap: butt;      /* bordes cuadrados */
 }
 
+/* Progreso */
 body.dark-mode .progress-ring__circle {
-    stroke: #0B4B64; /* color del progreso */
+    stroke: #ffffff;           /* progreso blanco */
+    stroke-width: 28;
+    stroke-linecap: butt;      /* sin redondeo */
+    transition: stroke-dashoffset 1s ease;
 }
 
+/* Etiqueta del porcentaje */
 body.dark-mode .progress-label {
-    color: #FFFFFF; /* porcentaje dentro del anillo */
+    position: absolute;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 2;
 }
+
+/* Quita el pseudo-elemento que generaba el cuadrado */
+body.dark-mode .progress-container::before {
+    content: none;
+}
+
+
+
 
 body.dark-mode .btn-volver {
     background-color: #06475B;
