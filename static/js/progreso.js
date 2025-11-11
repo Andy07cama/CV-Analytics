@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     circle.style.strokeDashoffset = `${circumference}`;
 
     const offset = circumference - (porcentaje / 100) * circumference;
+
     setTimeout(() => {
         circle.style.strokeDashoffset = offset;
     }, 300);

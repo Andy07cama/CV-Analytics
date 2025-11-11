@@ -70,8 +70,8 @@ main {
 /* --- Círculo de progreso --- */
 .progress-circle {
     position: relative;
-    width: 360px;
-    height: 360px;
+    width: 420px;
+    height: 420px;
     border-radius: 50%;
     background: conic-gradient(#0B4B64 var(--progress, 0%), #C3CAD9 0);
     display: flex;
@@ -81,14 +81,14 @@ main {
 }
 
 .progress-inner {
-    width: 260px;
-    height: 260px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     background-color: #F9FAF8;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: bold;
     color: #0B4B64;
 }
@@ -115,8 +115,8 @@ main {
 /* --- Círculo de progreso SVG --- */
 .progress-container {
     position: relative;
-    width: 260px;
-    height: 260px;
+    width: 320px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,22 +129,22 @@ main {
 .progress-ring__background {
     fill: #F9FAF8; /* fondo central */
     stroke: #C3CAD9; /* color gris del fondo */
-    stroke-width: 28; /* más ancho */
+    stroke-width: 32; /* más ancho */
 }
 
 .progress-ring__circle {
     fill: transparent;
     stroke: #0B4B64; /* color del progreso */
     stroke-width: 28; /* igual que el fondo */
-    stroke-dasharray: 691; /* 2 * π * r */
-    stroke-dashoffset: 691;
+    stroke-dasharray: 880; /* 2 * π * r */
+    stroke-dashoffset: 880;
     transition: stroke-dashoffset 1s ease;
     /* quitamos el borde redondeado */
 }
 
 .progress-label {
     position: absolute;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: bold;
     color: #000;
 }
@@ -183,46 +183,71 @@ body.dark-mode .sugerencias-content {
     color: #DDE6EC;
 }
 
-/* --- MODO OSCURO: anillo limpio, progreso blanco y glow --- */
-body.dark-mode .progress-container {
+
+
+
+/* --- Círculo de progreso --- */
+body.dark-mode .progress-circle {
     position: relative;
-    width: 260px;
-    height: 260px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background-color: #2C3E50;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 30px 10px rgba(0, 180, 255, 0.25);
+    z-index: 1;
+}
+
+body.dark-mode .progress-inner {
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
+    background-color: #2C3E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: #0B4B64;
 }
 
-/* Fondo del anillo */
+/* --- Círculo de progreso SVG --- */
+body.dark-mode .progress-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .progress-ring {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 0 25px rgba(0, 180, 255, 0.55));
+}
+
 body.dark-mode .progress-ring__background {
-    fill: none;                /* sin relleno blanco */
-    stroke: #2C3E50;           /* mismo color del fondo */
-    stroke-width: 28;
-    stroke-linecap: butt;      /* bordes cuadrados */
+    fill: #2C3E50; /* fondo central */
+    stroke: #0B4B64; /* color gris del fondo */
+    stroke-width: 32; /* más ancho */
 }
 
-/* Progreso */
 body.dark-mode .progress-ring__circle {
-    stroke: #ffffff;           /* progreso blanco */
-    stroke-width: 28;
-    stroke-linecap: butt;      /* sin redondeo */
+    fill: transparent;
+    stroke: #FFFFFF; /* color del progreso */
+    stroke-width: 28; /* igual que el fondo */
+    stroke-dasharray: 880; /* 2 * π * r */
+    stroke-dashoffset: 880;
     transition: stroke-dashoffset 1s ease;
+    /* quitamos el borde redondeado */
 }
 
-/* Etiqueta del porcentaje */
 body.dark-mode .progress-label {
     position: absolute;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: bold;
-    color: #ffffff;
-    z-index: 2;
-}
-
-/* Quita el pseudo-elemento que generaba el cuadrado */
-body.dark-mode .progress-container::before {
-    content: none;
+    color: #FFFFFF;
 }
 
 
