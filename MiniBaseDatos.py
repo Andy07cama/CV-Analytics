@@ -11,7 +11,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
-ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'jpeg', 'png'}
+ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'jpeg', 'png', 'doc', 'docx'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -146,7 +146,8 @@ def comparar():
         return jsonify({'error': 'Archivos vacíos'}), 400
 
     if not allowed_file(cv_file.filename) or not allowed_file(req_file.filename):
-        return jsonify({'error': 'Tipo de archivo no permitido. Solo PDF.'}), 400
+        return jsonify({'error': 'Tipo de archivo no permitido. Solo PDF, DOC o DOCX.'}), 400
+
 
     cv_filename = secure_filename(cv_file.filename)
     req_filename = secure_filename(req_file.filename)

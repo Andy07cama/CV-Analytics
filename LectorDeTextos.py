@@ -6,6 +6,7 @@ import pytesseract
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe" #computadora 65 no frizada ort
 from PIL import Image
 import os
+from docx import Document
 
 def extraer_texto_pdf(ruta_pdf):
     texto = ""
@@ -13,6 +14,27 @@ def extraer_texto_pdf(ruta_pdf):
         for pagina in pdf.pages:
             texto += pagina.extract_text() + "\n"
     return texto
+
+def extraer_texto_docx(ruta_docx):
+    """Extrae texto de un archivo .docx"""
+    texto = []
+    try:
+        doc = Document(ruta_docx)
+        for p in doc.paragraphs:
+            texto.append(p.text)
+    except Exception as e:
+        print(f"Error al leer DOCX: {e}")
+    return "\n".join(texto)
+
+def extraer_texto_doc(ruta_doc):
+    """Extrae texto de un archivo .doc usando textract (requiere pip install textract)"""
+    try:
+        import textract
+        texto = textract.process(ruta_doc).decode("utf-8", errors="ignore")
+        return texto
+    except Exception as e:
+        print(f"Error al leer DOC: {e}")
+        return ""
 
 def extraer_texto_imagen(ruta_imagen):
     """Extrae texto desde una imagen (JPG, PNG, etc.) usando OCR."""
@@ -26,12 +48,17 @@ def extraer_texto_imagen(ruta_imagen):
 
 
 def extraer_texto_archivo(ruta_archivo):
-    """Detecta el tipo de archivo (PDF o imagen) y aplica el método correcto."""
+    """Detecta el tipo de archivo y aplica el método correcto."""
     extension = os.path.splitext(ruta_archivo)[1].lower()
+
     if extension == ".pdf":
         return extraer_texto_pdf(ruta_archivo)
     elif extension in [".png", ".jpg", ".jpeg"]:
         return extraer_texto_imagen(ruta_archivo)
+    elif extension == ".docx":
+        return extraer_texto_docx(ruta_archivo)
+    elif extension == ".doc":
+        return extraer_texto_doc(ruta_archivo)
     else:
         print(f"⚠️ Tipo de archivo no soportado: {extension}")
         return ""
