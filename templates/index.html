@@ -26,9 +26,9 @@
                 <label for="cv" class="upload-label">Sube tu CV:</label>
                 <div class="drop-area" data-target="cv">
                     <img src="{{ url_for('static', filename='img/CV SubirDoc.png') }}" alt="Documento" class="icon-img">
-                    <input type="file" id="cv" name="cv" accept="application/pdf" hidden>
+                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png," hidden>
                     <span class="file-name" data-default="Seleccionar archivos PDF">
-                        Seleccionar archivos PDF<br><small>o arrastra y suelta aquí</small>
+                        Seleccionar archivos<br><small>o arrastra y suelta aquí</small>
                     </span>
                 </div>
             </div>
@@ -45,9 +45,9 @@
                 <label for="requisitos" class="upload-label">Sube la propuesta de trabajo:</label>
                 <div class="drop-area" data-target="requisitos">
                     <img src="{{ url_for('static', filename='img/CV SubirCarpeta.png') }}" alt="Carpeta" class="icon-img">
-                    <input type="file" id="requisitos" name="requisitos" accept="application/pdf" hidden>
+                    <input type="file" id="requisitos" name="requisitos" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png," hidden>
                     <span class="file-name" data-default="Seleccionar archivos PDF">
-                        Seleccionar archivos PDF<br><small>o arrastra y suelta aquí</small>
+                        Seleccionar archivos<br><small>o arrastra y suelta aquí</small>
                     </span>
                 </div>
             </div>
