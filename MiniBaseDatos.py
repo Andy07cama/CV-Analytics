@@ -168,7 +168,7 @@ def comparar():
         return render_template("resultado.html", similitud="0%", feedback="❗ No se pudo leer el contenido de uno o ambos archivos PDF. Verificá que no estén vacíos y que tengan texto real.")
 
     resultado = comparar_textos(texto_cv, texto_req)
-    similitud = f"{resultado[0]:.2f}%"
+    similitud = f"{resultado[0]}"
     feedback = resultado[1]
 
     sugerencias = ""

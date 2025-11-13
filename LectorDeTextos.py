@@ -1,5 +1,6 @@
 import pdfplumber
 import re
+import mammoth
 import unicodedata
 from datetime import datetime
 import pytesseract
@@ -27,11 +28,11 @@ def extraer_texto_docx(ruta_docx):
     return "\n".join(texto)
 
 def extraer_texto_doc(ruta_doc):
-    """Extrae texto de un archivo .doc usando textract (requiere pip install textract)"""
+    """Extrae texto de un archivo .doc usando mammoth (alternativa moderna a textract)."""
     try:
-        import textract
-        texto = textract.process(ruta_doc).decode("utf-8", errors="ignore")
-        return texto
+        with open(ruta_doc, "rb") as f:
+            result = mammoth.extract_raw_text(f)
+            return result.value
     except Exception as e:
         print(f"Error al leer DOC: {e}")
         return ""
