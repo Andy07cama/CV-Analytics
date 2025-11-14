@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const percent = (total / 2) * 100;
         progress.style.setProperty("--progress-percent", percent + "%");
 
-        // Cambiar apariencia del botón
         if (total === 2) {
             boton.disabled = false;
             boton.value = "COMPARAR";
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
             boton.classList.remove("ready");
         }
 
-        // Aplicar borde blanco a drop-areas con archivo cargado
         document.querySelectorAll(".drop-area").forEach(area => {
             const input = document.getElementById(area.dataset.target);
             if (input.files.length > 0) {
@@ -48,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Inicializar eventos
     document.querySelectorAll(".drop-area").forEach(area => {
         const input = document.getElementById(area.dataset.target);
 
@@ -79,38 +76,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Inicializar nombres y estado
     actualizarNombres();
     actualizarEstado();
 });
 
 
 
+/* ==============================================================
+REEMPLAZO DEL SUBMIT POR EL NUEVO (mínimo 2s + espera servidor)
+============================================================== */
 
-// Al presionar "Comparar" → animar círculo
 const form = document.querySelector('.formulario-contenedor');
 const progressCircle = document.querySelector('.progress-circle');
 const progressText = document.getElementById('progress-text');
 const botonComparar = document.getElementById('boton-comparar');
 
 if (form && progressCircle && botonComparar) {
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Evita envío inmediato
-    if (botonComparar.disabled) return;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (botonComparar.disabled) return;
 
-    // Quita texto y muestra animación
-    progressText.style.display = 'none';
-    progressCircle.classList.add('loading');
+        progressText.style.display = 'none';
+        progressCircle.classList.add('loading');
 
-    // Simula carga
-    setTimeout(() => {
-    progressCircle.classList.remove('loading');
-    progressCircle.classList.add('check');
-    }, 1800); // animación de carga (~1.8s)
+        const datos = new FormData(form);
 
-    // Luego de mostrar el check, redirige
-    setTimeout(() => {
-    form.submit();
-    }, 2800); // espera el check antes de pasar
-});
+        // PROMESA DEL SERVIDOR
+        const serverPromise = fetch(form.action, {
+            method: "POST",
+            body: datos
+        }).then(async r => ({
+            ok: true,
+            html: await r.text()
+        })).catch(() => ({
+            ok: false,
+            html: "<h1>Error del servidor</h1>"
+        }));
+
+        // PROMESA DEL MÍNIMO 2 SEGUNDOS
+        const delayPromise = new Promise(resolve => setTimeout(resolve, 2000));
+
+        // ESPERA A QUE **AMBAS** TERMINEN
+        const [{ html }] = await Promise.all([serverPromise, delayPromise]);
+
+        // ⚪ TERMINA LA CARGA → SE VE EL ✔
+        progressCircle.classList.remove('loading');
+        progressCircle.classList.add('check');
+
+        // ⏳ **ESPERA 2500ms para que el ✔ realmente se vea**
+        setTimeout(() => {
+            document.open();
+            document.write(html);
+            document.close();
+        }, 2500); 
+    });
 }
