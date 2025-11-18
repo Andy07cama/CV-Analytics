@@ -65,7 +65,7 @@ REQUISITOS DEL PUESTO:
 Formato de salida OBLIGATORIO:
 - El resultado debe ser texto plano, sin Markdown, sin guiones ni viñetas.
 - Escribe una lista NUMERADA del 1 al 5.
-- Cada sugerencia debe estar separada por cinco saltos de línea (seis veces Enter) (ESTO ES OBLIGATORIO PARA QUE SE VEA MÁS PROLIJO Y ESPACIADO PARA MEJOR VISIBILIDAD).
+- Cada sugerencia debe estar separada por dos saltos de línea (dos veces Enter) (ESTO ES OBLIGATORIO PARA QUE SE VEA MÁS PROLIJO Y ESPACIADO PARA MEJOR VISIBILIDAD).
 - Cada sugerencia debe tener una o dos oraciones como máximo.
 - La salida debe verse prolija y con espacio visible entre puntos.
 
